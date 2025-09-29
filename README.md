@@ -7,17 +7,17 @@ ISSP 2025 term project
 | Week 2 tasks                                             | Assignee(s)       | Status  / date      |
 |----------------------------------------------------|-------------------|---------------|
 | Team & Environment Setup                           |   Full Team       |               |
-| - Create GitHub repo                               |                   | ✅ Not Started |
-| - Set up Slack/Discord, Trello, Google Drive       |                   | ✅ Not Started |
-| - Schedule weekly meetings                         |                   | ✅Not Started |
+| - Create GitHub repo                               |                   | ✅ complete|
+| - Set up Slack/Discord, Trello, Google Drive       |                   | ✅ complete|
+| - Schedule weekly meetings                         |                   | ✅ complete |
 |                                                    |                   |               |
 | Local Development Setup                            |      Full Team    |               |
-| - Install Node.js                                  |                   | 🟡 in progress |
-| - Install VS Code and extensions                   |                   | 🟡 in progress |
-| - Clone project repo                               |                   | 🟡 in progress |
+| - Install Node.js                                  |                   | ✅ complete |
+| - Install VS Code and extensions                   |                   | ✅ complete|
+| - Clone project repo                               |                   | ✅ complete |
 |                                                    |                   |               |
-| Learn Core Technologies                            |     Full Team     |   Continuous   |
-| - Complete Next.js tutorial                        |                   | 🟡 in progress |
+| Learn Core Technologies                            |     Full Team     |   Current   |
+| - Complete Next.js tutorial                        |                   | ✅ complete|
 | - Learn React basics                               |                   | 🟡 in progress |
 | - Learn Tailwind, TypeScript, shadcn/ui            |                   | 🟡 in progress |
 
