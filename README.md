@@ -7,14 +7,14 @@ ISSP 2025 term project
 | Week 2 tasks                                             | Assignee(s)       | Status  / date      |
 |----------------------------------------------------|-------------------|---------------|
 | Team & Environment Setup                           |   Full Team       |               |
-| - Create GitHub repo                               |                   | ✅ complete|
-| - Set up Slack/Discord, Trello, Google Drive       |                   | ✅ complete|
-| - Schedule weekly meetings                         |                   | ✅ complete |
+| - Create GitHub repo                               |                   | ✅ complete 09/29  |
+| - Set up Slack/Discord, Trello, Google Drive       |                   | ✅ complete 09/29  |
+| - Schedule weekly meetings                         |                   | ✅ complete 09/29   |
 |                                                    |                   |               |
 | Local Development Setup                            |      Full Team    |               |
-| - Install Node.js                                  |                   | ✅ complete |
-| - Install VS Code and extensions                   |                   | ✅ complete|
-| - Clone project repo                               |                   | ✅ complete |
+| - Install Node.js                                  |                   | ✅ complete 09/29  |
+| - Install VS Code and extensions                   |                   | ✅ complete 09/29  |
+| - Clone project repo                               |                   | ✅ complete 09/29  |
 |                                                    |                   |               |
 | Learn Core Technologies                            |     Full Team     |   Current   |
 | - Complete Next.js tutorial                        |                   | ✅ complete|
@@ -25,7 +25,16 @@ ISSP 2025 term project
 
 | Week 3/4                                           | Assignee(s)       | Status  / date      |
 |----------------------------------------------------|-------------------|---------------|
+| Tutorial Completions                                              |                   |               |
+|- Finish tutorial videos                 |        Cole, Gurkor Michael           |    ✅ complete  09/29         |
+|- Finish tutorial videos                 |      Connor, leanne, Justin, Kevin       |     🟡 in progress           |
 |                                                    |                   |               |
+| Begin Dashboard Page                               |  Cole,Kyle ,Michael       |    🟡 in progress           |
+| - Layout.tsx                                       |                   |   🟡 in progress            |
+| - Buttons                                          |                   |    🟡 in progress           |
+| - navbar                                           |                   |    🟡 in progress           |
+| - Client Card                                      |                   |    🟡 in progress           |
+| - Call Intelligence Dashboard                      |    John, Connor, Michael  |    🟡 in progress           |
 | Build Component Sandbox                            |                   |               |
 | - Create Button, Card, FormField components        |                   | ⬜ Not Started |
 | - Style using Tailwind and shadcn/ui               |                   | ⬜ Not Started |
