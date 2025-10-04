@@ -44,6 +44,11 @@
   --color-Custom-color: var(--Custom-color);
   --color-chartcolor1: var(--chartcolor1);
   --color-chartcolor2: var(--chartcolor2);
+  --itemnames: var(--font-bold, --font-size: 20px);
+  --progressgood: oklch(84.427% 0.24019 148.561);
+  --progressperfect: oklch(61.369% 0.19958 143.013);
+  --progressbad: rgb(220, 22, 22);
+  --progressmedium: oklch(83.089% 0.17984 110.811);
 }
 
 :root {
@@ -82,6 +87,13 @@
   --Custom-color: oklch(0.6 0.2 150);
   --chartcolor1: oklch(0.1 0.3 250);
   --chartcolor2: oklch(52.785% 0.20849 349.836);
+  --textmssg: oklch(58.363% 0.222 258.711);
+  --progressgood: oklch(84.427% 0.24019 148.561);
+  --progressperfect: oklch(61.369% 0.19958 143.013);
+  --progressbad: rgb(220, 22, 22);
+  --progressmedium: oklch(83.089% 0.17984 110.811);
+  --qa-call-bg: color-mix(in oklch, var(--Custom-color) 12%, transparent);
+  --qa-docs-bg: color-mix(in oklch, var(--textmssg) 12%, transparent);
 }
 
 .dark {
@@ -119,6 +131,13 @@
   --Custom-color: oklch(0.6 0.2 150);
   --chartcolor1: oklch(0.1 0.3 250);
   --chartcolor2: oklch(52.785% 0.20849 349.836);
+  --textmssg: oklch(58.363% 0.222 258.711);
+  --progressgood: oklch(84.427% 0.24019 148.561);
+  --progressperfect: oklch(61.369% 0.19958 143.013);
+  --progressbad: rgb(220, 22, 22);
+  --progressmedium: oklch(83.089% 0.17984 110.811);
+  --qa-call-bg: color-mix(in oklch, var(--Custom-color) 12%, transparent);
+  --qa-docs-bg: color-mix(in oklch, var(--textmssg) 12%, transparent);
 }
 
 @layer base {
