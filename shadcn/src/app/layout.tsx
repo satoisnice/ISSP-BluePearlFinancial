@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Appsidebar from "@/components/ui/AppSideBar";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvidors";
-import { SidebarProvider } from "@/components/ui/sidebar";
+
 import { cookies } from "next/headers";
 
 const geistSans = Geist({
@@ -28,11 +27,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -40,13 +38,10 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SidebarProvider defaultOpen={defaultOpen}>
-            <Appsidebar />
-            <main className="w-full">
-              <Navbar />
-              <div className="px4">{children}</div>
-            </main>
-          </SidebarProvider>
+          <div className="min-h-screen flex flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
