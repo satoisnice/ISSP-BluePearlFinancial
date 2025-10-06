@@ -17,14 +17,14 @@ const actions: QA[] = [
     title: "Start Call Session",
     subtitle: "5 leads waiting",
     href: "/calls",
-    bgVar: "bg-[var(--qa-call-bg)]",
+    bgVar: "--qa-call-bg",
   },
   {
     id: "docs",
     title: "Check Documents",
     subtitle: "3 pending review",
     href: "/documents",
-    bgVar: " bg-[var(--qa-docs-bg)] ",
+    bgVar: " --qa-docs-bg ",
   },
 ];
 
@@ -35,14 +35,21 @@ function QuickActions() {
         <Link
           key={a.id}
           href={a.href}
-          className={`"
+          style={
+            {
+              "--qa-bg": `var(${a.bgVar})`,
+            } as React.CSSProperties
+          }
+          className="
             block rounded-xl border p-5 transition-colors
-            ${a.bgVar} hover:opacity-90 
-            "`}
+            bg-[var(--qa-bg)] hover:opacity-90
+            "
         >
           <div className="flex items-start justify-between">
-            <div>
-              <div className="font-medium">{a.title}</div>
+            <div className="leading-tight">
+              <div className="font-medium text-[color:var(--qa-color)]">
+                {a.title}
+              </div>
               <div className="text-sm text-muted-foreground">{a.subtitle}</div>
             </div>
           </div>

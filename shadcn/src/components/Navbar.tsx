@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { useTheme } from "next-themes";
-
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { ScrollArea } from "./ui/scroll-area";
 import { Button } from "./ui/button";
@@ -35,16 +34,16 @@ const Navbar = () => {
           <span className="text-xl font-bold"> Broker Command Center</span>
 
           <Button>
-            <span>Todays Focus</span>
+            <Link href="/"><span>Todays Focus</span></Link>
           </Button>
           <Button>
-            <span>Prospecting</span>
+            <Link href="/prospecting"><span>Prospecting</span></Link>
           </Button>
           <Button>
-            <span>Prospecting</span>
+            <Link href="/pipeline"><span>Pipeline</span></Link>
           </Button>
           <Button>
-            <span>Prospecting</span>
+            <Link href="/Book"><span>Book</span></Link>
           </Button>
         </div>
         <div className="ml-auto flex items-center gap-2">
