@@ -27,14 +27,14 @@ ISSP 2025 term project
 |----------------------------------------------------|-------------------|---------------|
 | Tutorial Completions                                              |                   |               |
 |- Finish tutorial videos                 |        Cole, Gurkor Michael           |    ✅ complete  09/29         |
-|- Finish tutorial videos                 |      Connor, leanne, Justin, Kevin       |     🟡 in progress           |
+|- Finish tutorial videos                 |      Connor, leanne, Justin, Kevin       |     ✅ complete 10/06           |
 |                                                    |                   |               |
-| Begin Dashboard Page                               |  Cole,Kyle ,Michael       |    🟡 in progress           |
-| - Layout.tsx                                       |                   |   🟡 in progress            |
-| - Buttons                                          |                   |    🟡 in progress           |
-| - navbar                                           |                   |    🟡 in progress           |
-| - Client Card                                      |                   |    🟡 in progress           |
-| - Call Intelligence Dashboard                      |    John, Connor, Michael  |    🟡 in progress           |
+| Begin Dashboard Page                               |  Cole,Kyle ,Michael       |    ✅ complete 10/06           |
+| - Layout.tsx                                       |                   |   ✅ complete 10/06           |
+| - Buttons                                          |                   |    ✅ complete 10/06           |
+| - navbar                                           |                   |    ✅ complete 10/06           |
+| - Client Card                                      |                   |    ✅ complete 10/06           |
+| - Call Intelligence Dashboard                      |    John, Connor, Michael  |    ✅ complete 10/06           |
 | Build Component Sandbox                            |                   |               |
 | - Create Button, Card, FormField components        |                   | ⬜ Not Started |
 | - Style using Tailwind and shadcn/ui               |                   | ⬜ Not Started |
