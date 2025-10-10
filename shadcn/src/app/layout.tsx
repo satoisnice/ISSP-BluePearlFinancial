@@ -39,7 +39,7 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen flex flex-col">
-            <Navbar />
+            <Navbar/>
             <main className="flex-1">{children}</main>
           </div>
         </ThemeProvider>

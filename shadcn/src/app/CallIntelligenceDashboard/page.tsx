@@ -1,8 +1,13 @@
 import CardList from "@/components/CardList";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { DropdownDate } from "@/components/ui/DropdownDate";
+import { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Call Intelligence Dashboard",
+  description: "Broker Call Analysis - Powered by AI",
+};
 
 const homepage = () => {
   return (
@@ -10,7 +15,7 @@ const homepage = () => {
     <div className="">
       {/* TOP TITLE DIV */}
       <div className="flex items-center justify-between pr-4 pl-4 border-b">
-        <div>
+        <div className="pb-4">
           <h1 className="font-semibold text-3xl">
             Call Intelligence Dashboard
           </h1>
