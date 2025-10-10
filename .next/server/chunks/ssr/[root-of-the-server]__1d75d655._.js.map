@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/kimsu/OneDrive/Documents/BCIT/Sem%204/ISSP%20App/shadcn/src/app/pipeline/page.tsx"],"sourcesContent":["const Pipeline = () => {\r\n    return (\r\n        <div>Pipeline</div>\r\n    )\r\n}\r\nexport default Pipeline;"],"names":[],"mappings":";;;;;;AAAA,MAAM,WAAW;IACb,qBACI,8OAAC;kBAAI;;;;;;AAEb;uCACe","debugId":null}}]
+}
