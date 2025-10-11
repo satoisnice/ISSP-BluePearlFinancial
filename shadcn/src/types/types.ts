@@ -20,7 +20,7 @@ export interface CallRecord {
     // AI ANalysis (pre-gen in mock data)
     summary: string;
     urgencyLevel: "high" | "medium" | "low";
-    keyPoints: string[];
+    keyPoints: string[]; // list of strings
     nextSteps: string;
     followUpDate?: string;
 }
