@@ -140,6 +140,89 @@
   --qa-docs-bg: color-mix(in oklch, var(--textmssg) 12%, transparent);
 }
 
+.cards > a:nth-child(1) {
+  --qa-bg: #f4f8ff;
+  --qa-color: #0b3d91;
+}
+.cards > a:nth-child(2) {
+  --qa-bg: #fff7f2;
+  --qa-color: #8a3700;
+}
+.cards > a:nth-child(3) {
+  --qa-bg: #f5fff4;
+  --qa-color: #0f6b00;
+}
+.cards > a:nth-child(4) {
+  --qa-bg: #fff4fb;
+  --qa-color: #7a0f57;
+}
+.cards > a:nth-child(5) {
+  --qa-bg: #f6f6ff;
+  --qa-color: #312e81;
+}
+.stage-pill {
+  --pill-bg: transparent;
+  --pill-fg: currentColor;
+  --pill-ring: transparent;
+}
+.stage-dot {
+  --dot: currentColor;
+}
+
+.stage-application {
+  --pill-bg: #eef4ff;
+  --pill-fg: #1e40af;
+  --pill-ring: #c7d2fe;
+  --dot: #2563eb;
+}
+
+.stage-processing {
+  --pill-bg: #fff7e6;
+  --pill-fg: #92400e;
+  --pill-ring: #fde68a;
+  --dot: #f59e0b;
+}
+
+.stage-underwriting {
+  --pill-bg: #f5f0ff;
+  --pill-fg: #6d28d9;
+  --pill-ring: #e9d5ff;
+  --dot: #7c3aed;
+}
+
+.stage-appraisal {
+  --pill-bg: #fff2e8;
+  --pill-fg: #9a3412;
+  --pill-ring: #fed7aa;
+  --dot: #fb923c;
+}
+
+.stage-readytofund {
+  --pill-bg: #edfdf3;
+  --pill-fg: #065f46;
+  --pill-ring: #bbf7d0;
+  --dot: #10b981;
+}
+.action-dot {
+  --dot: currentColor;
+}
+
+.action-submit {
+  --dot: #2563eb;
+}
+.action-prepare {
+  --dot: #f59e0b;
+}
+.action-chase {
+  --dot: #ef4444;
+}
+.action-appraise {
+  --dot: #10b981;
+}
+.action-default {
+  --dot: #9ca3af;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
