@@ -11,7 +11,7 @@ export interface CallRecord {
     id: string;
     brokerId: string;
     clientId: string;
-    contactName: string;
+    contactName: string; // client or broker?
     phoneNumber: string;
     callDate: string; // ISO date string
     duration: string; // "MM:SS" format
@@ -20,7 +20,7 @@ export interface CallRecord {
     // AI ANalysis (pre-gen in mock data)
     summary: string;
     urgencyLevel: "high" | "medium" | "low";
-    keyPoints: string[];
+    keyPoints: string[]; // list of strings
     nextSteps: string;
     followUpDate?: string;
 }
