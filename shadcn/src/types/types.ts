@@ -11,7 +11,7 @@ export interface CallRecord {
     id: string;
     brokerId: string;
     clientId: string;
-    contactName: string;
+    contactName: string; // client or broker?
     phoneNumber: string;
     callDate: string; // ISO date string
     duration: string; // "MM:SS" format

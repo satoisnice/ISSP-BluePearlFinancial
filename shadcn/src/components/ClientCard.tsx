@@ -1,17 +1,12 @@
-import { Client } from "@/types/types";
-import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+import { CallRecord, Client } from "@/types/types";
+import { mock_call_1 } from "@/data/clientMock";
 
 interface Props {
-    client: Client
+  client: Client;
+  callRecord: CallRecord;
 }
 
-const ClientCard = ({client}: Props) => {
+const ClientCard = ({ client, callRecord }: Props) => {
   return (
     // CARD CONTAINER
     <div className="rounded-lg border border-gray-200 overflow-hidden">
@@ -38,13 +33,36 @@ const ClientCard = ({client}: Props) => {
             </div>
             {/* CARD HEADER */}
             <div>
-                <div className="flex items-center gap-3">
-                    name should b
-                    <h3 className="font-semibold text-gray-900">{client.name}</h3>
-                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-red-100">High Urgency</span>
-                </div>
-                <div></div>
-                <p></p>
+              <div className="flex items-center gap-3">
+                <h3 className="font-semibold">{client.name}</h3>
+                {callRecord.urgencyLevel === "high" ? (
+                  <span className="px-2 py-1 rounded-full text-xs font-medium text-red-600 bg-red-100">
+                    {}High Urgency
+                  </span>
+                ) : callRecord.urgencyLevel === "medium" ? (
+                  <span className="px-2 py-1 rounded-full text-xs font-medium text-yellow-600 bg-yellow-100">
+                    medium urgency
+                  </span>
+                ) : callRecord.urgencyLevel === "low" ? (
+                  <span className="px-2 py-1 rounded-full text-xs font-medium text-green-600 bg-green-100">
+                    Low urgency
+                  </span>
+                ) : null}
+                <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100">
+                  {callRecord.nextSteps}
+                </span>
+              </div>
+              {/* info */}
+              <div className="flex items-center gap-4 mt-1 text-sm text-gray-600">
+                <span className="">{client.phone}</span>
+                <span className="">•</span>
+                <span className="">{client.lastContactDate}</span>
+                <span className="">•</span>
+                <span className="">{callRecord.duration}</span>
+                <span className="">•</span>
+                <span className="">{client.mortgageAmount}</span>
+              </div>
+              <p className="text-sm text-gray-700 mt-2">{callRecord.summary}</p>
             </div>
           </div>
         </div>

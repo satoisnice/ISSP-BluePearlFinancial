@@ -2,7 +2,7 @@ import CardList from "@/components/CardList";
 import ClientCard from "@/components/ClientCard";
 import { Button } from "@/components/ui/button";
 import { DropdownDate } from "@/components/ui/DropdownDate";
-import { mockProspects } from "@/data/mockData";
+import { mock_call_1, mock_client_1 } from "@/data/clientMock";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   description: "Broker Call Analysis - Powered by AI",
 };
 
-const mock_client = mockProspects[0] 
 const homepage = () => {
   return (
     // PAGE CONTAINER
@@ -78,7 +77,7 @@ const homepage = () => {
       {/* CALL CARDS */}
       <div className="p-6">
         <div>
-          <ClientCard client={}/>
+          <ClientCard client={mock_client_1} callRecord={mock_call_1}/>
           {/* <CardList title="sup"/> */}
         </div>
 
