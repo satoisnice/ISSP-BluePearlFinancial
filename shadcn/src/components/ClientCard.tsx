@@ -1,5 +1,6 @@
 import { CallRecord, Client } from "@/types/types";
 import { mock_call_1 } from "@/data/clientMock";
+import Image from "next/image";
 
 interface Props {
   client: Client;
@@ -65,6 +66,62 @@ const ClientCard = ({ client, callRecord }: Props) => {
               <p className="text-sm text-gray-700 mt-2">{callRecord.summary}</p>
             </div>
           </div>
+          {/* CROSS SELL  */}
+          <div className="flex items-center gap-2">
+            <span className="flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                className="lucide lucide-sparkles w-3 h-3"
+              >
+                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
+                <path d="M20 3v4"></path>
+                <path d="M22 5h-4"></path>
+                <path d="M4 17v2"></path>
+                <path d="M5 18H3"></path>
+              </svg>
+              {/* what determines cross sell? */}2 Cross-Sell
+            </span>
+          </div>
+        </div>
+        {/* NEXT SECTION W PLAY RECORDING BUTTON */}
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-600">Next:</span>
+            <span className="text-sm font-medium text-gray-900">
+              What should go here? Del later
+            </span>
+            <span className="text-sm font-medium text-gray-900">
+              {callRecord.nextSteps}
+            </span>
+            <span className="whitespace-pre text-sm text-gray-500">
+              • Due: {callRecord.followUpDate}
+            </span>
+          </div>
+          <button className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-play w-3 h-3"
+            >
+              <polygon points="6 3 20 12 6 21 6 3"></polygon>
+            </svg>
+            Play Recording
+          </button>
         </div>
       </div>
     </div>
