@@ -1,54 +1,67 @@
-import { CallRecord, Client } from "@/types/types";
-import { mock_call_1 } from "@/data/clientMock";
-import Image from "next/image";
+"use client";
+
+import { CallRecord, CallStrength, Client, Lead, LeadActvity } from "@/types/types";
+import { lightFormat } from "date-fns";
+import {
+  ArrowBigRight,
+  ArrowBigRightIcon,
+  ChevronDown,
+  PhoneCall,
+  Play,
+  Sparkles,
+  Target,
+} from "lucide-react";
+import { useState } from "react";
 
 interface Props {
   client: Client;
   callRecord: CallRecord;
+  lead: Lead;
+  leadActivity: LeadActvity;
+  callStrength: CallStrength;
 }
 
-const ClientCard = ({ client, callRecord }: Props) => {
+const ClientCard = ({ client, callRecord, lead, leadActivity, callStrength }: Props) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const urgencyColors = {
+    high: "text-red-600 bg-red-100",
+    medium: "text-yellow-600 bg-yellow-100",
+    low: "text-green-600 bg-green-100",
+  };
+
+  const urgencyLabel = {
+    high: "high urgency",
+    medium: "medium urgency",
+    low: "low urgency",
+  };
+
   return (
     // CARD CONTAINER
     <div className="rounded-lg border border-gray-200 overflow-hidden">
-      <div className="p-4 hover:bg-gray-50 cursor-pointer">
+      <div
+        onClick={() => setExpanded(!expanded)}
+        className="p-4 hover:bg-gray-50 hover:shadow-md transition-all overflow-hidden cursor-pointer"
+      >
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
             {/* SVG DEPENDENT ON STATE OF ? */}
             <div className="w-10 h-10 rounded-full flex items-center justify-center bg-green-100">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#2563eb"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                <path d="M14.05 2a9 9 0 0 1 8 7.94"></path>
-                <path d="M14.05 6A5 5 0 0 1 18 10"></path>
-              </svg>
+              <PhoneCall height={24} width={24} className="text-[#2563eb]" />
             </div>
             {/* CARD HEADER */}
             <div>
               <div className="flex items-center gap-3">
                 <h3 className="font-semibold">{client.name}</h3>
-                {callRecord.urgencyLevel === "high" ? (
-                  <span className="px-2 py-1 rounded-full text-xs font-medium text-red-600 bg-red-100">
-                    {}High Urgency
+                {lead.urgency && (
+                  <span
+                    className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      urgencyColors[lead.urgency]
+                    }`}
+                  >
+                    {urgencyLabel[lead.urgency]}
                   </span>
-                ) : callRecord.urgencyLevel === "medium" ? (
-                  <span className="px-2 py-1 rounded-full text-xs font-medium text-yellow-600 bg-yellow-100">
-                    medium urgency
-                  </span>
-                ) : callRecord.urgencyLevel === "low" ? (
-                  <span className="px-2 py-1 rounded-full text-xs font-medium text-green-600 bg-green-100">
-                    Low urgency
-                  </span>
-                ) : null}
+                )}
                 <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100">
                   {callRecord.nextSteps}
                 </span>
@@ -69,26 +82,14 @@ const ClientCard = ({ client, callRecord }: Props) => {
           {/* CROSS SELL  */}
           <div className="flex items-center gap-2">
             <span className="flex items-center gap-1 px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-sparkles w-3 h-3"
-              >
-                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path>
-                <path d="M20 3v4"></path>
-                <path d="M22 5h-4"></path>
-                <path d="M4 17v2"></path>
-                <path d="M5 18H3"></path>
-              </svg>
+              <Sparkles className="w-3 h-3" />
               {/* what determines cross sell? */}2 Cross-Sell
             </span>
+            <ChevronDown
+              className={`cursor-pointer w-3 h-3 text-gray-400 transform transition-transform ${
+                expanded ? "rotate-180" : ""
+              }`}
+            />
           </div>
         </div>
         {/* NEXT SECTION W PLAY RECORDING BUTTON */}
@@ -105,23 +106,64 @@ const ClientCard = ({ client, callRecord }: Props) => {
               • Due: {callRecord.followUpDate}
             </span>
           </div>
-          <button className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-play w-3 h-3"
-            >
-              <polygon points="6 3 20 12 6 21 6 3"></polygon>
-            </svg>
+          <button
+            onClick={(e) => e.stopPropagation()}
+            className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
+          >
+            <Play className="w-3 h-3" />
             Play Recording
           </button>
+        </div>
+      </div>
+      {/* EXPANDED DETAILS */}
+      <div
+        className={`${
+          expanded ? "block" : "hidden"
+        } border-t border-gray-200 p-4 bg-gray-50`}
+      >
+        <div className="grid grid-cols-3 gap-6">
+          <div className="space-y-4"></div>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4 text-gray-600" />
+                Key Discussion Points
+              </h4>
+              <ul className="space-y-1">
+                {callRecord.keyPoints.map((point, index) => (
+                  <li className="flex items-start gap-2 text-sm" key={index}>
+                    <ArrowBigRight className="w-4 h-4 text-green-600 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-purple-700" />
+                Cross-sell Opportunities
+              </h4>
+              <div className="space-y-2">
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                  <div className="font-medium text-purple-900">
+                    Placeholder Company
+                  </div>
+                  <div className="text-sm text-purple-700 mt-1">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Perspiciatis nobis debitis commodi, quas atque ipsam
+                    aspernatur beatae, adipisci maiores assumenda nemo rem
+                    aliquid maxime explicabo reprehenderit, tempore minus
+                    temporibus accusantium.
+                  </div>
+                  <button className="text-xs text-purple-600 hover:text-purple-700 mt-2 cursor-pointer">
+                    Add to pipeline
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
