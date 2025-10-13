@@ -35,11 +35,11 @@ const ClientCard = ({ client, callRecord }: Props) => {
 
   return (
     // CARD CONTAINER
-    <div
-      onClick={() => setExpanded(!expanded)}
-      className="rounded-lg border border-gray-200 hover:shadow-md transition-all overflow-hidden cursor-pointer"
-    >
-      <div className="p-4 hover:bg-gray-50">
+    <div className="rounded-lg border border-gray-200 overflow-hidden">
+      <div
+        onClick={() => setExpanded(!expanded)}
+        className="p-4 hover:bg-gray-50 hover:shadow-md transition-all overflow-hidden cursor-pointer"
+      >
         <div className="flex items-start justify-between">
           <div className="flex items-center gap-4">
             {/* SVG DEPENDENT ON STATE OF ? */}
@@ -105,50 +105,58 @@ const ClientCard = ({ client, callRecord }: Props) => {
           </div>
           <button
             onClick={(e) => e.stopPropagation()}
-            className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1"
+            className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
           >
             <Play className="w-3 h-3" />
             Play Recording
           </button>
         </div>
-        {/* EXPANDED DETAILS */}
-        <div
-          className={`${
-            expanded ? "block" : "hidden"
-          } border-t border-gray-200 p-4 bg-gray-50`}
-        >
-          <div className="grid grid-cols-3 gap-6">
-            <div className="space-y-4"></div>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
-                  <Target className="w-4 h-4 text-gray-600" />
-                  Key Discussion Points
-                </h4>
-                <ul className="space-y-1">
-                  {callRecord.keyPoints.map((point, index) => (
-                    <li className="flex items-start gap-2 text-sm" key={index}>
-                      <ArrowBigRight className="w-4 h-4 text-green-600 mt-0.5" />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+      </div>
+      {/* EXPANDED DETAILS */}
+      <div
+        className={`${
+          expanded ? "block" : "hidden"
+        } border-t border-gray-200 p-4 bg-gray-50`}
+      >
+        <div className="grid grid-cols-3 gap-6">
+          <div className="space-y-4"></div>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4 text-gray-600" />
+                Key Discussion Points
+              </h4>
+              <ul className="space-y-1">
+                {callRecord.keyPoints.map((point, index) => (
+                  <li className="flex items-start gap-2 text-sm" key={index}>
+                    <ArrowBigRight className="w-4 h-4 text-green-600 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-purple-700"/>
-                  Cross-sell Opportunities
-                </h4>
-                <div className="space-y-2">
-                  <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-                    <div className="font-medium text-purple-900">Placeholder Company</div>
-                    <div className="text-sm text-purple-700 mt-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perspiciatis nobis debitis commodi, quas atque ipsam aspernatur beatae, adipisci maiores assumenda nemo rem aliquid maxime explicabo reprehenderit, tempore minus temporibus accusantium.</div>
-                    <button className="text-xs text-purple-600 hover:text-purple-700 mt-2">Add to pipeline</button>
-
+          </div>
+          <div className="space-y-4">
+            <div>
+              <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-purple-700" />
+                Cross-sell Opportunities
+              </h4>
+              <div className="space-y-2">
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                  <div className="font-medium text-purple-900">
+                    Placeholder Company
                   </div>
-
+                  <div className="text-sm text-purple-700 mt-1">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Perspiciatis nobis debitis commodi, quas atque ipsam
+                    aspernatur beatae, adipisci maiores assumenda nemo rem
+                    aliquid maxime explicabo reprehenderit, tempore minus
+                    temporibus accusantium.
+                  </div>
+                  <button className="text-xs text-purple-600 hover:text-purple-700 mt-2">
+                    Add to pipeline
+                  </button>
                 </div>
               </div>
             </div>
