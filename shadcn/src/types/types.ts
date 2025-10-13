@@ -35,6 +35,5 @@ export interface Client {
     lastContactDate: string;
     assignedBrokerId: string;
     source?: string; // From whom
-    priority?: "hot" | "warm" | "cold"; // for the filters
     notes?: string; // Additional notes
 }
