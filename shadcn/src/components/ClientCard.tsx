@@ -1,6 +1,6 @@
 "use client";
 
-import { CallRecord, Client } from "@/types/types";
+import { CallRecord, CallStrength, Client, Lead, LeadActvity } from "@/types/types";
 import { lightFormat } from "date-fns";
 import {
   ArrowBigRight,
@@ -16,9 +16,12 @@ import { useState } from "react";
 interface Props {
   client: Client;
   callRecord: CallRecord;
+  lead: Lead;
+  leadActivity: LeadActvity;
+  callStrength: CallStrength;
 }
 
-const ClientCard = ({ client, callRecord }: Props) => {
+const ClientCard = ({ client, callRecord, lead, leadActivity, callStrength }: Props) => {
   const [expanded, setExpanded] = useState(false);
 
   const urgencyColors = {
@@ -50,13 +53,13 @@ const ClientCard = ({ client, callRecord }: Props) => {
             <div>
               <div className="flex items-center gap-3">
                 <h3 className="font-semibold">{client.name}</h3>
-                {callRecord.urgencyLevel && (
+                {lead.urgency && (
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      urgencyColors[callRecord.urgencyLevel]
+                      urgencyColors[lead.urgency]
                     }`}
                   >
-                    {urgencyLabel[callRecord.urgencyLevel]}
+                    {urgencyLabel[lead.urgency]}
                   </span>
                 )}
                 <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100">
@@ -154,7 +157,7 @@ const ClientCard = ({ client, callRecord }: Props) => {
                     aliquid maxime explicabo reprehenderit, tempore minus
                     temporibus accusantium.
                   </div>
-                  <button className="text-xs text-purple-600 hover:text-purple-700 mt-2">
+                  <button className="text-xs text-purple-600 hover:text-purple-700 mt-2 cursor-pointer">
                     Add to pipeline
                   </button>
                 </div>
