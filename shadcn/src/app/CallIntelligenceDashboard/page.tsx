@@ -1,6 +1,8 @@
 import CardList from "@/components/CardList";
+import ClientCard from "@/components/ClientCard";
 import { Button } from "@/components/ui/button";
 import { DropdownDate } from "@/components/ui/DropdownDate";
+import { mock_call_1, mock_call_strength_1, mock_client_1, mock_lead_1, mock_lead_activity_1 } from "@/data/clientMock";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -75,7 +77,8 @@ const homepage = () => {
       {/* CALL CARDS */}
       <div className="p-6">
         <div>
-          <CardList title="sup"/>
+          <ClientCard client={mock_client_1} callRecord={mock_call_1} lead={mock_lead_1} leadActivity={mock_lead_activity_1} callStrength={mock_call_strength_1}/>
+          {/* <CardList title="sup"/> */}
         </div>
 
       </div>
