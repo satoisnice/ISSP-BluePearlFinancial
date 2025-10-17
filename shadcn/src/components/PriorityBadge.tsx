@@ -1,23 +1,34 @@
 import { Badge } from "@/components/ui/badge";
-import { Client } from "@/types/types";
 
 interface PriorityBadgeProps {
-    priority: NonNullable<Client["priority"]>
+    priority: "hot" | "warm" | "cold"
 }
 
 import React from 'react'
 
 const PriorityBadge = ({ priority }: PriorityBadgeProps) => {
-    const variants: Record<string, "destructive" | "secondary" | "outline"> = {
-        hot: "destructive",
-        warm: "secondary",
-        cold: "outline"
+  const config = {
+    hot: {
+      variant: "destructive" as const,
+      label: "Hot"
+    },
+    warm: {
+      variant: "warm" as const,
+      label: "Warm"
+    },
+    cold: {
+      variant: "cold" as const,
+      label: "Cold"
     }
+  }
+    
+    const { variant, label } = config[priority];
+
   return (
-    <Badge variant={variants[priority]} className="capitalize">
-        {priority}
+    <Badge variant={variant} className="capitalize">
+      {label}
     </Badge>
-  )
-}
+  );
+};
 
 export default PriorityBadge
