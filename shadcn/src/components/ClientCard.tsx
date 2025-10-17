@@ -129,22 +129,23 @@ const ClientCard = ({
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600">Next:</span>
             <span className="text-sm font-medium text-gray-900">
-              What should go here? Del later
-            </span>
-            <span className="text-sm font-medium text-gray-900">
               {callRecord.nextSteps}
             </span>
-            <span className="whitespace-pre text-sm text-gray-500">
-              • Due: {callRecord.followUpDate}
-            </span>
+            {callRecord.followUpDate && (
+              <span className="whitespace-pre text-sm text-gray-500">
+                • Due: {callRecord.followUpDate}
+              </span>
+            )}
           </div>
-          <button
-            onClick={(e) => e.stopPropagation()}
-            className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
-          >
-            <Play className="w-3 h-3" />
-            Play Recording
-          </button>
+          {callRecord && (
+            <button
+              onClick={(e) => e.stopPropagation()}
+              className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
+            >
+              <Play className="w-3 h-3" />
+              Play Recording
+            </button>
+          )}
         </div>
       </div>
       {/* EXPANDED DETAILS */}
@@ -431,11 +432,35 @@ const ClientCard = ({
                   <div className="bg-white rounded-lg p-3 space-y-1 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Sentiment:</span>
-                      <span className={`font-medium ${lead.callQuality.sentiment==="positive"?  "text-green-600": ""} ${lead.callQuality.sentiment==="negative"? "text-red-600": ""}`}>{lead.callQuality.sentiment}</span>
+                      <span
+                        className={`font-medium ${
+                          lead.callQuality.sentiment === "positive"
+                            ? "text-green-600"
+                            : ""
+                        } ${
+                          lead.callQuality.sentiment === "negative"
+                            ? "text-red-600"
+                            : ""
+                        }`}
+                      >
+                        {lead.callQuality.sentiment}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Engagement:</span>
-                      <span className={`font-medium ${lead.callQuality.engagment==="high"?  "text-green-600": ""} ${lead.callQuality.engagment==="low"? "text-red-600": ""}`}>{lead.callQuality.engagment}</span>
+                      <span
+                        className={`font-medium ${
+                          lead.callQuality.engagment === "high"
+                            ? "text-green-600"
+                            : ""
+                        } ${
+                          lead.callQuality.engagment === "low"
+                            ? "text-red-600"
+                            : ""
+                        }`}
+                      >
+                        {lead.callQuality.engagment}
+                      </span>
                     </div>
                   </div>
                 </div>
