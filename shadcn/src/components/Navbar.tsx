@@ -1,7 +1,8 @@
 "use client";
 
-import { Calendar1Icon, LogOut, Moon, Settings, Sun, User } from "lucide-react";
+import { Calendar1Icon, LogOut, Moon, Settings, Sun, User, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import {
   DropdownMenu,
@@ -24,6 +25,7 @@ import { Separator } from "@/components/ui/separator";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
   const [date, setDate] = useState<Date | undefined>(new Date());
   const [open, setOpen] = useState(false);
 
@@ -33,18 +35,33 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <span className="text-xl font-bold"> Broker Command Center</span>
 
-          <Button>
-            <Link href="/"><span>Todays Focus</span></Link>
-          </Button>
-          <Button>
-            <Link href="/prospecting"><span>Prospecting</span></Link>
-          </Button>
-          <Button>
-            <Link href="/pipeline"><span>Pipeline</span></Link>
-          </Button>
-          <Button>
-            <Link href="/Book"><span>Book</span></Link>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="outline"
+                className="hover:bg-transparent dark:hover:bg-transparent focus-visible:ring-0 focus-visible:border-transparent hover:cursor-pointer"
+              >
+                <span className="flex items-center gap-2">
+                  Menu
+                  <ChevronDown className="size-4" />
+                </span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem asChild data-active={pathname === "/"} className="hover:cursor-pointer">
+                <Link href="/">Todays Focus</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild data-active={pathname === "/prospecting"} className="hover:cursor-pointer">
+                <Link href="/prospecting">Prospecting</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild data-active={pathname === "/pipeline"} className="hover:cursor-pointer">
+                <Link href="/pipeline">Pipeline</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild data-active={pathname === "/Book"} className="hover:cursor-pointer">
+                <Link href="/Book">Book</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <Popover open={open} onOpenChange={setOpen}>
