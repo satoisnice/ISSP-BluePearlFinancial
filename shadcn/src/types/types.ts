@@ -41,6 +41,15 @@ export interface Client {
   assignedBrokerId: string;
 }
 
+export interface ClientProfile {
+  id: string;
+  client: Client; // may not line up with db, possibly change to str
+    employment?: string;
+    family?: string;
+    goals?: string;
+  updatedAt: string;
+}
+
 export interface LeadActvity {
   id: string;
   type:
@@ -51,8 +60,8 @@ export interface LeadActvity {
     | "documents_received"
     | "follow_up"
     | "note";
-    description?: string
-    createdAt: string
+  description?: string;
+  createdAt: string;
 }
 
 // lead is information on the client such as property, life shit, rate discussion, call quality, etc...
@@ -64,7 +73,7 @@ export interface Lead {
   type: "renewal" | "new_purchase" | "refinance"; // come back to this
   createdAt: string;
   status: "open" | "in_progress" | "closed";
-  activities?: LeadActvity[]
+  activities?: LeadActvity[];
 
   propertyDetails?: {
     type: string;
@@ -80,7 +89,15 @@ export interface Lead {
 
   lifeEvents?: string[];
   keyDiscussionPoints?: string[];
-  objectionsAndResponses?: { objection: string; response: string; timestamp: string}[]; // list of dicts
+  objectionsAndResponses?: {
+    objection: string;
+    response: string;
+    timestamp: string[]; // list of times ["4:23", "5:11"]
+  }[]; // list of dicts
+  crossSellOpportunities?: {
+    type: string;
+    description: string;
+  }[]
   callQuality?: {
     engagement: CallRecord["sentiment"];
   };

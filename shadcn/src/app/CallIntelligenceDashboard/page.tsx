@@ -5,7 +5,9 @@ import { DropdownDate } from "@/components/ui/DropdownDate";
 import {
   mock_call_1,
   mock_call_strength_1,
+  mock_call_strength_2,
   mock_client_1,
+  mock_client_profile_1,
   mock_lead_1,
   mock_lead_activity_1,
 } from "@/data/clientMock";
@@ -89,7 +91,8 @@ const homepage = () => {
               callRecord={mock_call_1}
               lead={mock_lead_1}
               leadActivity={mock_lead_activity_1}
-              callStrength={mock_call_strength_1}
+              callStrengths={[mock_call_strength_1, mock_call_strength_2]}
+              clientProfile={mock_client_profile_1}
             />
           </div>
           <div className="mt-5 mb-5">
@@ -98,7 +101,8 @@ const homepage = () => {
               callRecord={mock_call_1}
               lead={mock_lead_1}
               leadActivity={mock_lead_activity_1}
-              callStrength={mock_call_strength_1}
+              callStrengths={[mock_call_strength_1, mock_call_strength_2]}
+              clientProfile={mock_client_profile_1}
             />
           </div>
           <div className="mt-5 mb-5">
@@ -107,7 +111,8 @@ const homepage = () => {
               callRecord={mock_call_1}
               lead={mock_lead_1}
               leadActivity={mock_lead_activity_1}
-              callStrength={mock_call_strength_1}
+              callStrengths={[mock_call_strength_1, mock_call_strength_2]}
+              clientProfile={mock_client_profile_1}
             />
           </div>
           {/* <CardList title="sup"/> */}
