@@ -1,4 +1,11 @@
-import { CallRecord, CallStrength, Client, Lead, LeadActvity } from "@/types/types";
+import {
+  CallRecord,
+  CallStrength,
+  Client,
+  ClientProfile,
+  Lead,
+  LeadActvity,
+} from "@/types/types";
 
 export const mock_client_1: Client = {
   id: "1",
@@ -11,10 +18,24 @@ export const mock_client_1: Client = {
   assignedBrokerId: "1",
 };
 
+export const mock_client_profile_1: ClientProfile = {
+  id: "1",
+  client: mock_client_1,
+  employment: "Working, just promoted to senior manager",
+  family: "Married with 2 kids (17 and 14)",
+  goals: "Reduce monthly payments and fund renovation",
+  updatedAt: "2019-10-07",
+};
+
 export const mock_call_strength_1: CallStrength = {
   note: "Built great rapport by remembering daughter's university plans",
-  timestamp: "0:35"
-}
+  timestamp: "0:35",
+};
+
+export const mock_call_strength_2: CallStrength = {
+  note: "Clearly explained penalty calculation process",
+  timestamp: "8:15"
+};
 
 export const mock_call_1: CallRecord = {
   id: "1",
@@ -34,16 +55,16 @@ export const mock_call_1: CallRecord = {
     "Considering accessing equity for renovations",
   ],
   nextSteps: "refinance",
-  followUpDate: "2019-10-07"
+  followUpDate: "2019-10-07",
 };
 
 export const mock_lead_activity_1: LeadActvity = {
   id: "1",
-    type: "quoted",
-    createdAt: "2019-09-07"
-}
+  type: "quoted",
+  createdAt: "2019-09-07",
+};
 
-export const  mock_lead_1: Lead = {
+export const mock_lead_1: Lead = {
   id: "1",
   client: mock_client_1,
   brokerId: "1",
@@ -62,19 +83,41 @@ export const  mock_lead_1: Lead = {
   rateDiscussion: {
     currentRate: 4.79,
     desiredRate: 5.5,
-    rateSensitive: true
+    rateSensitive: true,
   },
 
-  lifeEvents: ["Planning kitchen renovation this summer", "Husband got promoted last month", "Daughter starting university next year"],
-  objectionsAndResponses: [{
-    objection:"TD is offering me 5.84% with $1,000 cashback",
-    response: "I can likely beat that rate and explained our lender has better prepayment options",
-    timestamp: "05:23"
-  }],
+  lifeEvents: [
+    "Planning kitchen renovation this summer",
+    "Husband got promoted last month",
+    "Daughter starting university next year",
+  ],
+  objectionsAndResponses: [
+    {
+      objection: "TD is offering me 5.84% with $1,000 cashback",
+      response:
+        "I can likely beat that rate and explained our lender has better prepayment options",
+      timestamp: ["5:23", "5:45"],
+    },
+    {
+      objection: "mewoj",
+      response: "meowww",
+      timestamp: ["4:11", "4:14"],
+    },
+  ],
+  crossSellOpportunities: [
+    {
+      type: "HELOC",
+      description: "Kitchen rennovation plans - coujld access up to $125k equity"
+    },
+    {
+      type: "Life Insurance",
+      description: "Daughter going to university - education costs protection"
+    }
+  ],
 
   callQuality: {
-    engagement: mock_call_1["sentiment"]
+    engagement: mock_call_1["sentiment"],
   },
 
-  recentCalls: [mock_call_1]
-}
+  recentCalls: [mock_call_1],
+};

@@ -15,12 +15,12 @@ export function DropdownDate() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger >
-        <Button className="px-4 py-2 border border-gray-300 rounded-lg">{range}</Button>
+        <Button className="px-4 py-2 border border-gray-300 rounded-lg cursor-pointer">{range}</Button>
       </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem onClick={()=> setRange("Today")}>Today</DropdownMenuItem>
-          <DropdownMenuItem onClick={()=> setRange("This Week")}>This Week</DropdownMenuItem>
-          <DropdownMenuItem onClick={()=> setRange("This Month")}>This Month</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer" onClick={()=> setRange("Today")}>Today</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer" onClick={()=> setRange("This Week")}>This Week</DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer" onClick={()=> setRange("This Month")}>This Month</DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
   );
