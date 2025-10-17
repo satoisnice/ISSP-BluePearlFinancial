@@ -1,19 +1,8 @@
-import CardList from "@/components/CardList";
-import { Separator } from "@/components/ui/separator";
+"use client";
 import { Progress } from "@/components/ui/progress"
 import { Button } from "@/components/ui/button";
-import { Acheivmentbar } from "@/components/ui/progresBars";
-import QuickActions from "@/components/ui/quickActons";
-import { Phone, Zap, Users, RotateCw, TrendingUp, MessageSquare } from "lucide-react";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Phone, Zap, Users, RotateCw, TrendingUp } from "lucide-react";
+import ProspectsList from "@/components/ProspectsList";
 
 const Prospecting = () => {
     return (
@@ -94,32 +83,7 @@ const Prospecting = () => {
           <div className="grid grid-cols-2 lg:gridcols-4 xl:grid-cols-3 gap-4 ">
             <div className="bg-primary-foreground p-4 rounded-lg lg:col-span-2 xl:col-span-1 2xl:col-span-2 ">
               <div className="space-y-4">
-                <h3 className="text-xl font-bold">Priority Prospects</h3>
-                <Separator />
-                <div className="flex justify-between">
-                  <p>Data</p>
-                  <div className="flex gap-3">
-                    <Button className="bg-green-500"><Phone/></Button>
-                    <Button className="bg-blue-500"><MessageSquare/></Button>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex justify-between">
-                  <p>Data</p>
-                  <div className="flex gap-3">
-                    <Button className="bg-green-500"><Phone/></Button>
-                    <Button className="bg-blue-500"><MessageSquare/></Button>
-                  </div>
-                </div>
-                <Separator />
-                <div className="flex justify-between">
-                  <p>Data</p>
-                  <div className="flex gap-3">
-                    <Button className="bg-green-500"><Phone/></Button>
-                    <Button className="bg-blue-500"><MessageSquare/></Button>
-                  </div>
-                </div>
-                <Separator />
+                <ProspectsList />
               </div>
             </div>
 
