@@ -25,6 +25,8 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-warm: var(--warm);
+  --color-cool: var(--cool);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -68,6 +70,8 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
+  --warm: oklch(0.69 0.2 40);
+  --cold: oklch(0.69 0.2 250);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -111,7 +115,9 @@
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
+  --destructive: oklch(62.793% 0.25768 29.223);
+  --warm: oklch(83.7% 0.128 66.29);
+  --cold: oklch(82.8% 0.111 230.318);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
@@ -138,6 +144,89 @@
   --progressmedium: oklch(83.089% 0.17984 110.811);
   --qa-call-bg: color-mix(in oklch, var(--Custom-color) 12%, transparent);
   --qa-docs-bg: color-mix(in oklch, var(--textmssg) 12%, transparent);
+}
+
+.cards > a:nth-child(1) {
+  --qa-bg: #f4f8ff;
+  --qa-color: #0b3d91;
+}
+.cards > a:nth-child(2) {
+  --qa-bg: #fff7f2;
+  --qa-color: #8a3700;
+}
+.cards > a:nth-child(3) {
+  --qa-bg: #f5fff4;
+  --qa-color: #0f6b00;
+}
+.cards > a:nth-child(4) {
+  --qa-bg: #fff4fb;
+  --qa-color: #7a0f57;
+}
+.cards > a:nth-child(5) {
+  --qa-bg: #f6f6ff;
+  --qa-color: #312e81;
+}
+.stage-pill {
+  --pill-bg: transparent;
+  --pill-fg: currentColor;
+  --pill-ring: transparent;
+}
+.stage-dot {
+  --dot: currentColor;
+}
+
+.stage-application {
+  --pill-bg: #eef4ff;
+  --pill-fg: #1e40af;
+  --pill-ring: #c7d2fe;
+  --dot: #2563eb;
+}
+
+.stage-processing {
+  --pill-bg: #fff7e6;
+  --pill-fg: #92400e;
+  --pill-ring: #fde68a;
+  --dot: #f59e0b;
+}
+
+.stage-underwriting {
+  --pill-bg: #f5f0ff;
+  --pill-fg: #6d28d9;
+  --pill-ring: #e9d5ff;
+  --dot: #7c3aed;
+}
+
+.stage-appraisal {
+  --pill-bg: #fff2e8;
+  --pill-fg: #9a3412;
+  --pill-ring: #fed7aa;
+  --dot: #fb923c;
+}
+
+.stage-readytofund {
+  --pill-bg: #edfdf3;
+  --pill-fg: #065f46;
+  --pill-ring: #bbf7d0;
+  --dot: #10b981;
+}
+.action-dot {
+  --dot: currentColor;
+}
+
+.action-submit {
+  --dot: #2563eb;
+}
+.action-prepare {
+  --dot: #f59e0b;
+}
+.action-chase {
+  --dot: #ef4444;
+}
+.action-appraise {
+  --dot: #10b981;
+}
+.action-default {
+  --dot: #9ca3af;
 }
 
 @layer base {

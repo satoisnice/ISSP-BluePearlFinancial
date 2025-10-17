@@ -42,6 +42,8 @@ export interface Client {
   propertyAddress?: string;
   lastContactDate: string;
   assignedBrokerId: string;
+  source?: string; // From whom
+  notes?: string; // Additional notes
 }
 
 export interface ClientProfile {
