@@ -34,7 +34,7 @@ export const mock_call_strength_1: CallStrength = {
 
 export const mock_call_strength_2: CallStrength = {
   note: "Clearly explained penalty calculation process",
-  timestamp: "8:15"
+  timestamp: "8:15",
 };
 
 export const mock_call_1: CallRecord = {
@@ -47,7 +47,10 @@ export const mock_call_1: CallRecord = {
   duration: "23:21",
   summary:
     "Existing client looking to refinance and pull equity for investment property. Strong financial position but concerned about qualifying with rental property.",
-  sentiment: "positive",
+  callQuality: {
+    engagment: "high",
+    sentiment: "positive",
+  },
   keyPoints: [
     "Current mortgage renews in 45 days",
     "Worried about rate increases",
@@ -107,17 +110,15 @@ export const mock_lead_1: Lead = {
   crossSellOpportunities: [
     {
       type: "HELOC",
-      description: "Kitchen rennovation plans - coujld access up to $125k equity"
+      description:
+        "Kitchen rennovation plans - coujld access up to $125k equity",
     },
     {
       type: "Life Insurance",
-      description: "Daughter going to university - education costs protection"
-    }
+      description: "Daughter going to university - education costs protection",
+    },
   ],
-
-  callQuality: {
-    engagement: mock_call_1["sentiment"],
-  },
-
+  callQuality: mock_call_1.callQuality,
   recentCalls: [mock_call_1],
+  competition: ["TD bank", "RBC Reached out last week."],
 };
