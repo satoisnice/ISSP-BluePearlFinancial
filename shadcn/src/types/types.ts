@@ -23,7 +23,10 @@ export interface CallRecord {
 
   // AI ANalysis (pre-gen in mock data)
   summary: string;
-  sentiment?: "positive" | "neutral" | "negative";
+  callQuality?: {
+    sentiment?: "positive" | "neutral" | "negative";
+    engagment?: "high" | "normal" | "low";
+  };
   keyPoints: string[]; // list of strings
   nextSteps: string;
   followUpDate?: string;
@@ -44,9 +47,9 @@ export interface Client {
 export interface ClientProfile {
   id: string;
   client: Client; // may not line up with db, possibly change to str
-    employment?: string;
-    family?: string;
-    goals?: string;
+  employment?: string;
+  family?: string;
+  goals?: string;
   updatedAt: string;
 }
 
@@ -97,10 +100,9 @@ export interface Lead {
   crossSellOpportunities?: {
     type: string;
     description: string;
-  }[]
-  callQuality?: {
-    engagement: CallRecord["sentiment"];
-  };
+  }[];
+  callQuality:CallRecord["callQuality"];
 
   recentCalls?: CallRecord[];
+  competition?: string[];
 }

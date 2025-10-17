@@ -15,6 +15,8 @@ import {
   ArrowBigRight,
   ArrowBigRightIcon,
   ArrowRight,
+  BarChart3,
+  Building,
   Check,
   CheckCircle,
   ChevronDown,
@@ -27,6 +29,7 @@ import {
   Sparkles,
   Speech,
   Target,
+  TriangleAlert,
   User,
 } from "lucide-react";
 import { useState } from "react";
@@ -126,22 +129,23 @@ const ClientCard = ({
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600">Next:</span>
             <span className="text-sm font-medium text-gray-900">
-              What should go here? Del later
-            </span>
-            <span className="text-sm font-medium text-gray-900">
               {callRecord.nextSteps}
             </span>
-            <span className="whitespace-pre text-sm text-gray-500">
-              • Due: {callRecord.followUpDate}
-            </span>
+            {callRecord.followUpDate && (
+              <span className="whitespace-pre text-sm text-gray-500">
+                • Due: {callRecord.followUpDate}
+              </span>
+            )}
           </div>
-          <button
-            onClick={(e) => e.stopPropagation()}
-            className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
-          >
-            <Play className="w-3 h-3" />
-            Play Recording
-          </button>
+          {callRecord && (
+            <button
+              onClick={(e) => e.stopPropagation()}
+              className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1 cursor-pointer"
+            >
+              <Play className="w-3 h-3" />
+              Play Recording
+            </button>
+          )}
         </div>
       </div>
       {/* EXPANDED DETAILS */}
@@ -360,39 +364,107 @@ const ClientCard = ({
               )}
             </div>
             {/* Rate disucssion */}
-              <div>
-                {lead.rateDiscussion && (
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
-                      <DollarSign className="w-4 h-4 text-gray-600" />
-                     Rate Discussion 
-                    </h4>
-                    <div className="bg-white rounded-lg p-3 space-y-1 text-sm">
-                      <div>
-                        <span className="text-gray-600 pre">Current: </span>
-                        <span className="font-medium">
-                          {lead.rateDiscussion.currentRate}%
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-gray-600 pre">Desired: </span>
-                        <span className="font-medium">
-                          Under {lead.rateDiscussion.desiredRate}%
-                        </span>
-                      </div>
-                      <div>
-                        <span className="text-gray-600 pre">Rate Sensitive: </span>
-                        <span className={`font-medium ${lead.rateDiscussion.rateSensitive? "text-red-600": "text-green-600"}`}>
-                          {lead.rateDiscussion.rateSensitive?"Yes":"No"}
-                        </span>
-                      </div>
+            <div>
+              {lead.rateDiscussion && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-gray-600" />
+                    Rate Discussion
+                  </h4>
+                  <div className="bg-white rounded-lg p-3 space-y-1 text-sm">
+                    <div>
+                      <span className="text-gray-600 pre">Current: </span>
+                      <span className="font-medium">
+                        {lead.rateDiscussion.currentRate}%
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-gray-600 pre">Desired: </span>
+                      <span className="font-medium">
+                        Under {lead.rateDiscussion.desiredRate}%
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-gray-600 pre">
+                        Rate Sensitive:{" "}
+                      </span>
+                      <span
+                        className={`font-medium ${
+                          lead.rateDiscussion.rateSensitive
+                            ? "text-red-600"
+                            : "text-green-600"
+                        }`}
+                      >
+                        {lead.rateDiscussion.rateSensitive ? "Yes" : "No"}
+                      </span>
                     </div>
                   </div>
-                )}
+                </div>
+              )}
             </div>
             {/* competition */}
             <div>
-            *1
+              {lead.competition && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                    <Building className="w-4 h-4 text-gray-600" />
+                    Competition
+                  </h4>
+                  <div className="bg-yellow-50 rounded-lg p-3 text-sm">
+                    {lead.competition.map((competition, index) => (
+                      <div key={index} className="flex items-center gap-2">
+                        <TriangleAlert className="h-3 w-3 text-yellow-600" />
+                        <span>{competition}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+            {/* call quality */}
+            <div>
+              {lead.callQuality && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
+                    <BarChart3 className="w-4 h-4 text-gray-600" />
+                    Call Quality
+                  </h4>
+                  <div className="bg-white rounded-lg p-3 space-y-1 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Sentiment:</span>
+                      <span
+                        className={`font-medium ${
+                          lead.callQuality.sentiment === "positive"
+                            ? "text-green-600"
+                            : ""
+                        } ${
+                          lead.callQuality.sentiment === "negative"
+                            ? "text-red-600"
+                            : ""
+                        }`}
+                      >
+                        {lead.callQuality.sentiment}
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Engagement:</span>
+                      <span
+                        className={`font-medium ${
+                          lead.callQuality.engagment === "high"
+                            ? "text-green-600"
+                            : ""
+                        } ${
+                          lead.callQuality.engagment === "low"
+                            ? "text-red-600"
+                            : ""
+                        }`}
+                      >
+                        {lead.callQuality.engagment}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
