@@ -51,7 +51,7 @@ const ClientCard = ({
   callStrengths,
   clientProfile,
 }: Props) => {
-  console.log("callstrewngths prop:", callStrengths);
+  // console.log("callstrewngths prop:", callStrengths);
   const [expanded, setExpanded] = useState(false);
 
   const urgencyColors = {

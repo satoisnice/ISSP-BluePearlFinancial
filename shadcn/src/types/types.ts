@@ -55,6 +55,15 @@ export interface ClientProfile {
   updatedAt: string;
 }
 
+export interface ClientProfile {
+  id: string;
+  client: Client; // may not line up with db, possibly change to str
+  employment?: string;
+  family?: string;
+  goals?: string;
+  updatedAt: string;
+}
+
 export interface LeadActvity {
   id: string;
   type:
