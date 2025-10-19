@@ -57,8 +57,7 @@ export interface Lead {
   }[];
 
   callQuality?: {
-    engagement: CallRecord["sentiment"];
+    engagement: Lead["urgency"];
   };
 
-  recentCalls?: CallRecord[];
 }
