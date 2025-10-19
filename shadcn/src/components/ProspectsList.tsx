@@ -1,33 +1,32 @@
 import { useState } from "react";
-import { Phone,  MessageSquare } from "lucide-react";
+import { Phone, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import  PriorityBadge from "@/components/PriorityBadge";
+import PriorityBadge from "@/components/PriorityBadge";
 
-import { mockClients } from "@/data/mockClients";
-import { mockCallRecords } from "@/data/mockCallRecords";
+import { mockLeads } from "@/data/mockLeads";
+import { urgencyToPriority, getTimeAgo } from "@/utils/clientHelpers";
 
-import { getClientPriority, getLatestCall, getTimeAgo } from "@/utils/clientHelpers";
+
 
 const ProspectsList = () => {
     const [ filter, setFilter ] = useState<"all" | "hot" | "warm" | "cold">("all");
     
-    const filteredClients = mockClients.filter((client) => {
+    const filteredLeads = mockLeads.filter((lead) => {
 
         if (filter === "all") return true;
 
-        const priority = getClientPriority(client, mockCallRecords);
+        const priority = urgencyToPriority(lead.urgency);
         return priority === filter;
     });
     
     const prioCounts = {
-        hot: mockClients.filter(c => getClientPriority(c, mockCallRecords) === "hot").length,
-        warm: mockClients.filter(c => getClientPriority(c, mockCallRecords) === "warm").length,
-        cold: mockClients.filter(c => getClientPriority(c, mockCallRecords) === "cold").length,
+        hot: mockLeads.filter(lead => urgencyToPriority(lead.urgency) === "hot").length,
+        warm: mockLeads.filter(lead => urgencyToPriority(lead.urgency) === "warm").length,
+        cold: mockLeads.filter(lead => urgencyToPriority(lead.urgency) === "cold").length,
     }
 
     return (
         <div className="bg-card rounded-xl border overflow-hidden">
-        {/* Header with Filter Buttons */}
         <div className="p-4 border-b">
             <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">Priority Prospects</h3>
@@ -38,7 +37,7 @@ const ProspectsList = () => {
                 size="sm"
                 onClick={() => setFilter("all")}
                 >
-                All ({mockClients.length})
+                All ({mockLeads.length})
                 </Button>
                 <Button
                 variant={filter === "hot" ? "destructive" : "ghost"}
@@ -66,67 +65,65 @@ const ProspectsList = () => {
         </div>
 
         <div className="divide-y">
-            {filteredClients.map((client) => {
+            {filteredLeads.map((lead) => {
           // Get data for this client
-          const priority = getClientPriority(client, mockCallRecords);
-          const latestCall = getLatestCall(client.id, mockCallRecords);
+          const priority = urgencyToPriority(lead.urgency);
           
           return (
             <div 
-              key={client.id}
+              key={lead.id}
               className="p-4 hover:bg-muted/50 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h4 className="font-semibold">{client.name}</h4>
+                    <h4 className="font-semibold">{lead.client.name}</h4>
                     <PriorityBadge priority={priority} />
                     <span className="text-xs text-muted-foreground">
-                      {getTimeAgo(client.lastContactDate)}
+                      {getTimeAgo(lead.client.lastContactDate)}
                     </span>
                   </div>
                   
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                    <span>{client.phone}</span>
+                    <span>{lead.client.phone}</span>
                     <span>•</span>
-                    {client.source && (
+                    {lead.client.source && (
                       <>
-                        <span>{client.source}</span>
+                        <span>{lead.client.source}</span>
                         <span>•</span>
                       </>
                     )}
                     <span className="font-medium text-green-600">
-                      {client.mortgageAmount || "Amount TBD"}
+                      {lead.client.mortgageAmount || "Amount TBD"}
                     </span>
                   </div>
                   
-                  {client.propertyAddress && (
+                  {lead.client.propertyAddress && (
                     <div className="text-sm mb-1">
-                      {client.propertyAddress}
+                      {lead.client.propertyAddress}
                     </div>
                   )}
                   
-                  {/* Latest Call Summary (from AI analysis!) */}
-                  {latestCall && (
-                    <div className="text-xs text-muted-foreground">
-                      {latestCall.summary}
+                  {lead.client.notes && (
+                    <div className="text-sm text-muted-foreground">
+                      {lead.client.notes}
                     </div>
                   )}
+                  
                 </div>
 
-                {/* Right Side - Action Buttons */}
                 <div className="flex gap-2 ml-4">
                   <Button 
                     size="icon" 
                     className="bg-green-600 hover:bg-green-700"
-                    onClick={() => console.log("Calling:", client.phone)}
+                    onClick={() => console.log("Calling:", lead.client.phone)}
                   >
                     <Phone className="w-4 h-4" />
                   </Button>
                   <Button 
                     size="icon" 
                     className="bg-blue-600 hover:bg-blue-700"
-                    onClick={() => console.log("Messaging:", client.email)}
+                    onClick={() => console.log("Messaging:", lead.client.email)}
                   >
                     <MessageSquare className="w-4 h-4" />
                   </Button>
