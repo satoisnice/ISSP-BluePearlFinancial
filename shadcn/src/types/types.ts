@@ -1,3 +1,38 @@
+// renamed from User -> Employee
+export interface Employee {
+  id: string;
+  brokerId: string;
+  fullName: string;
+  role: "broker" | "manager";
+  email: string;
+}
+
+export interface CallStrength {
+  note: string; // "e.g. did something amazing..."
+  timestamp?: string; // 0:45
+}
+export interface CallRecord {
+  id: string;
+  brokerId: string;
+  clientId: string;
+  contactName: string; // client
+  phoneNumber: string;
+  callDate: string; // ISO date string
+  duration: string; // "MM:SS" format
+  audioUrl?: string; // mock url -Edward
+
+  // AI ANalysis (pre-gen in mock data)
+  summary: string;
+  callQuality?: {
+    sentiment?: "positive" | "neutral" | "negative";
+    engagment?: "high" | "normal" | "low";
+  };
+  keyPoints: string[]; // list of strings
+  nextSteps: string;
+  followUpDate?: string;
+  callStrengths?: CallStrength[];
+}
+
 export interface Client {
   id: string;
   name: string; //name is ambiguous. first name? last name? full name?
@@ -9,6 +44,24 @@ export interface Client {
   assignedBrokerId: string;
   source?: string; // From whom
   notes?: string; // Additional notes
+}
+
+export interface ClientProfile {
+  id: string;
+  client: Client; // may not line up with db, possibly change to str
+  employment?: string;
+  family?: string;
+  goals?: string;
+  updatedAt: string;
+}
+
+export interface ClientProfile {
+  id: string;
+  client: Client; // may not line up with db, possibly change to str
+  employment?: string;
+  family?: string;
+  goals?: string;
+  updatedAt: string;
 }
 
 export interface LeadActvity {
@@ -53,7 +106,11 @@ export interface Lead {
   objectionsAndResponses?: {
     objection: string;
     response: string;
-    timestamp: string;
+    timestamp: string[]; // list of times ["4:23", "5:11"]
+  }[]; // list of dicts
+  crossSellOpportunities?: {
+    type: string;
+    description: string;
   }[];
 
   callQuality?: {

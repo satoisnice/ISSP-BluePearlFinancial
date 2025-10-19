@@ -18,8 +18,8 @@ ISSP 2025 term project
 |                                                    |                   |               |
 | Learn Core Technologies                            |     Full Team     |   Current   |
 | - Complete Next.js tutorial                        |                   | ✅ complete|
-| - Learn React basics                               |                   | 🟡 in progress |
-| - Learn Tailwind, TypeScript, shadcn/ui            |                   | 🟡 in progress |
+| - Learn React basics                               |                   | ✅ complete|
+| - Learn Tailwind, TypeScript, shadcn/ui            |                   | ✅ complete|
 
 
 
@@ -36,25 +36,25 @@ ISSP 2025 term project
 | - Client Card                                      |                   |    ✅ complete 10/06           |
 | - Call Intelligence Dashboard                      |    John, Connor, Michael  |    ✅ complete 10/06           |
 | Build Component Sandbox                            |                   |               |
-| - Create Button, Card, FormField components        |                   | ⬜ Not Started |
-| - Style using Tailwind and shadcn/ui               |                   | ⬜ Not Started |
-| - Showcase on sample page                          |                   | ⬜ Not Started |
+| - Create Button, Card, FormField components        |                   | 🟡 in progress|
+| - Style using Tailwind and shadcn/ui               |                   | 🟡 in progress|
+| - Showcase on sample page                          |                   | 🟡 in progress|
 |                                                    |                   |               |
 | Mock Data & Types                                  |                   |               |
-| - Define interfaces for User, CallRecord, Client   |                   | ⬜ Not Started |
-| - Build mock JSON data files                       |                   | ⬜ Not Started |
+| - Define interfaces for User, CallRecord, Client   |                   | ✅ complete 10/16|
+| - Build mock JSON data files                       |                   | ✅ complete 10/16|
 | - Load and test mock data                          |                   | ⬜ Not Started |
 
 
 | Task                                               | Assignee(s)       | Status  / date       |
 |----------------------------------------------------|-------------------|---------------|
 | App Router Setup                                   |                   |               |
-| - Set up App Router with /app                      |                   | ⬜ Not Started |
+| - Set up App Router with /app                      |                   | ✅ complete 10/16|
 | - Create pages: /, /calls, /calls/[id], /clients   |                   | ⬜ Not Started |
 | - Create dynamic routes for detail pages           |                   | ⬜ Not Started |
 |                                                    |                   |               |
 | Navigation & Layout                                |                   |               |
-| - Build sidebar with navigation links              |                   | ⬜ Not Started |
+| - Build sidebar with navigation links              |                   | 🟡 in progress|
 | - Create shared layout with header/sidebar         |                   | ⬜ Not Started |
 | - Add page titles and page transitions             |                   | ⬜ Not Started |
 |                                                    |                   |               |
@@ -66,13 +66,13 @@ ISSP 2025 term project
 | Task                                               | Assignee(s)       | Status  / date       |
 |----------------------------------------------------|-------------------|---------------|
 | Dashboard Layout                                   |                   |               |
-| - Base layout for dashboard                        |                   | ⬜ Not Started |
-| - Display list of calls from mock data             |                   | ⬜ Not Started |
+| - Base layout for dashboard                        |                   | ✅ complete 10/10|
+| - Display list of calls from mock data             |                   | ✅ complete 10/16|
 |                                                    |                   |               |
 | CallCard Component                                 |                   |               |
-| - Contact name, date, duration                     |                   | ⬜ Not Started |
-| - Expandable card section                          |                   | ⬜ Not Started |
-| - Display summary, key points, next steps          |                   | ⬜ Not Started |
+| - Contact name, date, duration                     |                   | ✅ complete 10/16|
+| - Expandable card section                          |                   | ✅ complete 10/16|
+| - Display summary, key points, next steps          |                   | ✅ complete 10/16|
 |                                                    |                   |               |
 | Filters & Search                                   |                   |               |
 | - Filter calls by Today / Week / Month             |                   | ⬜ Not Started |
