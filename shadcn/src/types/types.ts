@@ -112,8 +112,9 @@ export interface Lead {
     type: string;
     description: string;
   }[];
-  callQuality:CallRecord["callQuality"];
 
-  recentCalls?: CallRecord[];
-  competition?: string[];
+  callQuality?: {
+    engagement: Lead["urgency"];
+  };
+
 }

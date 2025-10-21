@@ -1,31 +1,12 @@
-import { Client, CallRecord } from "@/types/types";
+import { Lead } from "@/types/types";
 
-const urgencytoPriority = {
-    high: "hot",
-    medium: "warm",
-    low: "cold"
-} as const;
-
-export const getLatestCall = (
-    clientId: string,
-    callRecords: CallRecord[]
-): CallRecord | undefined => {
-    const clientCalls = callRecords
-    .filter(call => call.clientId === clientId)
-    .sort((a, b) => new Date(b.callDate).getTime() - new Date(a.callDate).getTime())
-
-    return clientCalls[0];
-};
-
-export const getClientPriority = (
-    client: Client,
-    callRecords: CallRecord[]
-): "hot" | "warm" | "cold" => {
-    const latestCall = getLatestCall(client.id, callRecords);
-
-    if (!latestCall) return "cold";
-
-    return urgencytoPriority[latestCall.urgencyLevel];
+export const urgencyToPriority = (urgency: Lead["urgency"]): "hot" | "warm" | "cold" => {
+    const map = {
+        high: "hot",
+        medium: "warm",
+        low: "cold"
+    } as const;
+    return map[urgency];
 };
 
 export const getTimeAgo = (isoDate: string): string => {
