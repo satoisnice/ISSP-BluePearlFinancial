@@ -35,7 +35,7 @@ export interface CallRecord {
 
 export interface Client {
   id: string;
-  name: string; //name is ambiguous. first name? last name? full name?
+  name: string; //full name
   phone: string;
   email: string;
   mortgageAmount?: string;
