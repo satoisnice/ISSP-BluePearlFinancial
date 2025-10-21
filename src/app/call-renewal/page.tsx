@@ -14,6 +14,8 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+import SimpleLineChart, { MortgageDataPoint } from "@/components/SimpleLineChart";
+
 /* HELPER FUNCTION TO SET THE STATUS OF RENEWAL STATE (RED IF OVERDUE YELLOW IF DUE ETC) */
 const getStatusStyles = (status: string): string => {
   const styles: Record<string, string> = {
@@ -27,6 +29,15 @@ const getStatusStyles = (status: string): string => {
 const getStatusText = (status: string, daysOverdue?: number): string => {
   return status === "overdue" ? `${daysOverdue} Days Overdue` : "Due Soon";
 };
+
+const mortgageTimelineData: MortgageDataPoint[] = [
+  { date: '2020-Q1', principal: 700000, equity: 100000 },
+  { date: '2021-Q1', principal: 685000, equity: 115000 },
+  { date: '2022-Q1', principal: 650000, equity: 150000 },
+  { date: '2023-Q1', principal: 615000, equity: 185000 },
+  { date: '2024-Q1', principal: 590000, equity: 210000 },
+  { date: 'Today', principal: 580000, equity: 220000 },
+];
 
 const CallRenewalPage = () => {
   const router = useRouter();
@@ -170,6 +181,17 @@ const CallRenewalPage = () => {
                 </div>
               </CardContent>
             </Card>
+            {/* GRAPH SECTION Financial History & Equity Growth */}
+            <Card className="mt-6 bg-primary-foreground dark:bg-gray-800 border dark:border-gray-700 shadow-sm transition-colors duration-300">
+              <CardHeader>
+                <CardTitle className="text-xl font-bold text-gray-900 dark:text-white">
+                  Financial History & Equity Growth
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="h-[300px] p-2">
+                <SimpleLineChart data={mortgageTimelineData}/>
+              </CardContent>
+            </Card>
           </div>
 
           {/* RIGHT COLUMN - OPPORTUNITY THEN QUICK ACTIONS */}
@@ -237,7 +259,6 @@ const CallRenewalPage = () => {
           CLIENT RENEWAL HISTORY/TIMELINE
         </div>
         <div className="">INTERACTION HISTORY</div>
-        <div className="">GRAPHS/METRICS</div>
       </div>
     </div>
   );
