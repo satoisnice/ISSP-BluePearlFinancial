@@ -2,7 +2,7 @@ import AppAreaChart from "@/components/AppAreaChart";
 import AppBarChart from "@/components/AppBarChar";
 import AppCalender from "@/components/AppCalender";
 import AppPieChart from "@/components/AppPieChart";
-import CardList from "@/components/CardList";
+import CardList from "@/components/Todo";
 import { Button } from "@/components/ui/button";
 import { ProgressBar } from "@/components/ui/progresBars";
 import { Acheivmentbar } from "@/components/ui/progresBars";

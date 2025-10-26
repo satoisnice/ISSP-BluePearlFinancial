@@ -55,7 +55,6 @@ export interface ClientProfile {
   updatedAt: string;
 }
 
-
 export interface LeadActvity {
   id: string;
   type:
@@ -108,5 +107,23 @@ export interface Lead {
   callQuality?: {
     engagement: Lead["urgency"];
   };
-
 }
+export type Priority = "urgent" | "high" | "normal";
+export type Tag = "follow-up" | "pipeline" | "prospecting";
+
+export interface TodoItem {
+  id: string;
+  priority: Priority;
+  tag: Tag;
+  title: string;
+  subtitle: string;
+  amount?: string;
+  stage?: string;
+  actions?: { phone?: boolean; message?: boolean };
+}
+export type PipelineItem = {
+  title: string;
+  totalAmount: number;
+  href: string;
+  count: number;
+};
