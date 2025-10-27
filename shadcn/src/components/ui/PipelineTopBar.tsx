@@ -12,11 +12,11 @@ export function PipelineTopBar() {
           </div>
           <div className="flex gap-3 items-stretch order-last">
             <Button className="flex items-center bg-[var(--textmssg)] gap-3">
-              <Funnel />
+              <Funnel/>
               Filter
             </Button>
             <Button className="items-center bg-[var(--Custom-color)]">
-              <ChartColumn />
+              <ChartColumn/>
               Analytics
             </Button>
           </div>
