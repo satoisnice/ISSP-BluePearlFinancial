@@ -363,7 +363,7 @@ export default function CallRecordingAndAnalysis() {
         className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white"
       >
         <Clock className="w-4 h-4" />
-        <span>10:32 AM</span>
+        <span>Download Recording</span>
       </Button>
       <Button
         variant="default"
