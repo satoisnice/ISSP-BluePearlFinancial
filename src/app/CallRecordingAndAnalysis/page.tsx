@@ -344,11 +344,9 @@ export default function CallRecordingAndAnalysis() {
             {callData.call_metadata.call_length}
           </p>
           <p className="flex items-center gap-1">
-            <Phone className="w-4 h-4" />
             {callData.call_metadata.call_agent}
           </p>
           <p className="flex items-center gap-1">
-            <Phone className="w-4 h-4" />
             {callData.call_metadata.call_contact}
           </p>
 
@@ -362,14 +360,14 @@ export default function CallRecordingAndAnalysis() {
         size="sm"
         className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white"
       >
-        <Clock className="w-4 h-4" />
+        <Download className="w-4 h-4" />
         <span>Download Recording</span>
       </Button>
       <Button
         variant="default"
         className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700"
       >
-        <Download className="w-4 h-4" />
+        <Target className="w-4 h-4" />
         Add to training library
       </Button>
     </div>
