@@ -131,7 +131,7 @@ function ClientList({ clients, onSelectClient, searchTerm, setSearchTerm }) {
         )}
       </div>
     </div>
-  );
+  );test
 }
 
 function ClientDetails({ client, onBack }) {
