@@ -1,18 +1,8 @@
+import { TodoItem } from "@/types/types";
 export type Priority = "urgent" | "high" | "normal";
 export type Tag = "follow-up" | "pipeline" | "prospecting";
 
-export interface MockTodoItem {
-  id: string;
-  priority: Priority;
-  tag: Tag;
-  title: string;
-  subtitle: string;
-  amount?: string;
-  stage?: string;
-  actions?: { phone?: boolean; message?: boolean };
-}
-
-export const mockTodo: MockTodoItem[] = [
+export const mockTodo: TodoItem[] = [
   {
     id: "sarah johnson",
     priority: "urgent",

@@ -121,9 +121,50 @@ export interface TodoItem {
   stage?: string;
   actions?: { phone?: boolean; message?: boolean };
 }
-export type PipelineItem = {
+
+export interface MockAchievementItem {
+  id: string;
+  current: number;
+  goal: number;
+}
+export interface WeeklyGoal {
+  label: string;
+  current: number;
+  goal: number;
+}
+
+export interface ActiveDeal {
+  id: number;
+  client: string;
+  title: string;
+  agent: string;
+  amount: number;
+  property: string;
+  stage: string;
+  nextAction: string;
+  days: number;
+}
+export interface PipelineItem {
   title: string;
   totalAmount: number;
   href: string;
   count: number;
+}
+
+export interface TodoItem {
+  id: string;
+  priority: Priority;
+  tag: Tag;
+  title: string;
+  subtitle: string;
+  amount?: string;
+  stage?: string;
+  actions?: { phone?: boolean; message?: boolean };
+}
+export type QA = {
+  id: string;
+  title: string;
+  subtitle: string;
+  href: string;
+  bgVar: string;
 };
