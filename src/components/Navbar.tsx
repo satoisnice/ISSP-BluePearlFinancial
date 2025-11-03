@@ -45,6 +45,9 @@ const Navbar = () => {
           <Button>
             <Link href="/Book"><span>Book</span></Link>
           </Button>
+          <Button>
+            <Link href="/CallRecordingAndAnalysis">Call Recordings</Link>
+          </Button>
         </div>
         <div className="ml-auto flex items-center gap-2">
           <Popover open={open} onOpenChange={setOpen}>
