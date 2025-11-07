@@ -36,6 +36,7 @@ export interface CallRecord {
 export interface Client {
   id: string;
   name: string; //full name
+  address: string;
   phone: string;
   email: string;
   mortgageAmount?: string;
