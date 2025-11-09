@@ -1,6 +1,6 @@
-import PipelineCards from "@/components/PipelineCards";
-import ActiveDeals from "@/components/ui/ActiveDeals";
-import { PipelineTopBar } from "@/components/ui/PipelineTopBar";
+import PipelineCards from "../../components/PipelineCards";
+import ActiveDeals from "../../components/ui/ActiveDeals";
+import { PipelineTopBar } from "../../components/ui/PipelineTopBar";
 
 export default function ProspectingPage() {
   return (
