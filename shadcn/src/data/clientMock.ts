@@ -5,7 +5,7 @@ import {
   ClientProfile,
   Lead,
   LeadActvity,
-} from "../types/types";
+} from "@/types/types";
 
 export const client_1 = {
   
@@ -49,7 +49,6 @@ export const mock_call_1: CallRecord = {
   phoneNumber: "778-123-456",
   callDate: "2019-09-07",
   duration: "23:21",
-  audioUrl: "/audio/call-1.mp3",
   summary:
     "Existing client looking to refinance and pull equity for investment property. Strong financial position but concerned about qualifying with rental property.",
   callQuality: {

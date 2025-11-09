@@ -30,7 +30,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
   SidebarMenuSubButton,
-} from "./sidebar";
+} from "@/components/ui/sidebar";
 import Image from "next/image";
 import {
   DropdownMenu,

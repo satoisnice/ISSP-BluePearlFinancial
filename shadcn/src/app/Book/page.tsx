@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card';
-import { Button } from '../../components/ui/button';
-import { Badge } from '../../components/ui/badge';
-import { Separator } from '../../components/ui/separator';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 import { 
   Phone, 
   MessageSquare, 
@@ -27,8 +27,8 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "../../components/ui/collapsible";
-import { Input } from "../../components/ui/input";
+} from "@/components/ui/collapsible";
+import { Input } from "@/components/ui/input";
 import { mockClients } from '../../data/mockClients';
 
 export default function BookPage() {

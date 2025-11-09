@@ -1,7 +1,7 @@
-import ClientCard from "../../components/ClientCard";
-import { Button } from "../../components/ui/button";
-import { DropdownDate } from "../../components/ui/DropdownDate";
-import { mock_clients, mock_lead_activity_1 } from "../../data/clientMock";
+import ClientCard from "@/components/ClientCard";
+import { Button } from "@/components/ui/button";
+import { DropdownDate } from "@/components/ui/DropdownDate";
+import { mock_clients, mock_lead_activity_1 } from "@/data/clientMock";
 import { Metadata } from "next";
 import Image from "next/image";
 import { mock } from "node:test";
