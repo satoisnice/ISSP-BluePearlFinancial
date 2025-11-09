@@ -31,6 +31,8 @@ const Icons: Record<IconKey, React.ComponentType<{ size?: number }>> = {
   Phone,
 };
 
+const nf = new Intl.NumberFormat("en-US");
+
 const detailClass = (s: string) => {
   const t = s.toLowerCase().trim();
   if (t.includes("overdue")) return "text-[color:var(--destructive)]";
@@ -58,7 +60,7 @@ export default function ProspectingCards() {
                     {a.title}
                   </div>
                   <div className="mt-3 text-3xl sm:text-4xl font-extrabold leading-tight">
-                    (a.count)
+                    {nf.format(a.count)}
                   </div>
                   <div className={`mt-2 text-base ${detailClass(a.detail)}`}>
                     {a.detail}
