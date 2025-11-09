@@ -10,7 +10,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 
 import { useTheme } from "next-themes";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
@@ -20,7 +20,7 @@ import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { Calendar } from "./ui/calendar";
 import { useState } from "react";
-import { Separator } from "./ui/separator";
+import { Separator } from "@/components/ui/separator";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -44,9 +44,6 @@ const Navbar = () => {
           </Button>
           <Button>
             <Link href="/Book"><span>Book</span></Link>
-          </Button>
-          <Button>
-            <Link href="/CallRecordingAndAnalysis">Call Recordings</Link>
           </Button>
         </div>
         <div className="ml-auto flex items-center gap-2">

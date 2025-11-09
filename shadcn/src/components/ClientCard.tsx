@@ -1,6 +1,6 @@
 "use client";
 
-import { mock_call_strength_1 } from "../data/clientMock";
+import { mock_call_strength_1 } from "@/data/clientMock";
 import {
   CallRecord,
   CallStrength,
@@ -8,7 +8,7 @@ import {
   ClientProfile,
   Lead,
   LeadActvity,
-} from "../types/types";
+} from "@/types/types";
 import { lightFormat } from "date-fns";
 import {
   AlertCircle,
