@@ -32,15 +32,13 @@ const homepage = () => {
       });
     });
     return totalObjections === 0
-      ? 100
-      : Math.round(handledObjections / totalObjections) * 100;
+      ? 100 
+      : Math.round(handledObjections / totalObjections) * 100 ;
   })();
 
-  const crossSells = mock_clients.reduce(
-    (sells, x) => sells + (x.lead.crossSellOpportunities?.length || 0),
-    0
-  );
+  const crossSells = mock_clients.reduce((sells, x) => sells + (x.lead.crossSellOpportunities?.length || 0), 0)
 
+  console.log(crossSells);
   const highUrgencies =
     mock_clients.filter((x) => x.lead.urgency === "high").length || 0;
 

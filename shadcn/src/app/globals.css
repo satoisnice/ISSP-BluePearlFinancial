@@ -98,24 +98,6 @@
   --progressmedium: oklch(83.089% 0.17984 110.811);
   --qa-call-bg: color-mix(in oklch, var(--Custom-color) 12%, transparent);
   --qa-docs-bg: color-mix(in oklch, var(--textmssg) 12%, transparent);
-  --badge-urgent-bg: #fee2e2;
-  --badge-urgent-text: #b91c1c;
-  --badge-urgent-border: #fecaca;
-  --badge-high-bg: #fffbeb;
-  --badge-high-text: #b45309;
-  --badge-high-border: #fde68a;
-  --badge-normal-bg: #f1f5f9;
-  --badge-normal-text: #334155;
-  --badge-normal-border: #e2e8f0;
-  --tag-follow-up-bg: #f3e8ff;
-  --tag-follow-up-text: #6b21a8;
-  --tag-follow-up-border: #e9d5ff;
-  --tag-pipeline-bg: #e0e7ff;
-  --tag-pipeline-text: #3730a3;
-  --tag-pipeline-border: #c7d2fe;
-  --tag-prospecting-bg: #d1fae5;
-  --tag-prospecting-text: #047857;
-  --tag-prospecting-border: #a7f3d0;
 }
 
 .dark {
