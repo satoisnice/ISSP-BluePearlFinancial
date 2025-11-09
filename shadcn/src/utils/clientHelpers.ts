@@ -1,4 +1,4 @@
-import { Lead } from "@/types/types";
+import { Lead } from "../types/types";
 
 export const urgencyToPriority = (urgency: Lead["urgency"]): "hot" | "warm" | "cold" => {
     const map = {

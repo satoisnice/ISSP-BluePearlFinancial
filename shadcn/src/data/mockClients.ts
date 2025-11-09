@@ -1,5 +1,5 @@
 // src/data/mockClients.ts
-import { Client } from "@/types/types";
+import { Client } from "../types/types";
 
 export const mockClients: Client[] = [
   {

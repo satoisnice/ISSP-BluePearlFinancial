@@ -1,5 +1,5 @@
 // Kyle's Mock Data for Leads
-import { Lead } from "@/types/types";
+import { Lead } from "../types/types";
 
 export const mockLeads: Lead[] = [
   {
