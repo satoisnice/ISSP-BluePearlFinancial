@@ -168,3 +168,18 @@ export type QA = {
   href: string;
   bgVar: string;
 };
+export type PipelinecardItem = {
+  title: string;
+  count: number;
+  detail: string;
+};
+export type Script = {
+  title: string;
+  subtitle: string;
+};
+
+export type ProspectingChallengeProps = {
+  challengeTitle?: string;
+  challengeNote?: string;
+  challengeProgress?: number;
+};
