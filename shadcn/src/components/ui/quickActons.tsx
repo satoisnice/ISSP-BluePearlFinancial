@@ -2,32 +2,7 @@
 
 import Link from "next/link";
 import * as React from "react";
-
-type QA = {
-  id: string;
-  title: string;
-  subtitle: string;
-  href: string;
-  bgVar: string;
-};
-
-const actions: QA[] = [
-  {
-    id: "call",
-    title: "Start Call Session",
-    subtitle: "5 leads waiting",
-    href: "/calls",
-    bgVar: "--qa-call-bg",
-  },
-  {
-    id: "docs",
-    title: "Check Documents",
-    subtitle: "3 pending review",
-    href: "/documents",
-    bgVar: " --qa-docs-bg ",
-  },
-];
-
+import { actions } from "@/data/mockQuickActions";
 function QuickActions() {
   return (
     <div className="space-y-3">
