@@ -1,11 +1,15 @@
-// renamed from User -> Employee
+// Employee: Brooker or Manager
 export interface Employee {
   id: string;
   brokerId: string;
   fullName: string;
   role: "broker" | "manager";
   email: string;
+  phone?: string;
+  extention?: string;
 }
+
+// Calls and Analysis
 
 export interface CallStrength {
   note: string; // "e.g. did something amazing..."
@@ -20,6 +24,7 @@ export interface CallRecord {
   callDate: string; // ISO date string
   duration: string; // "MM:SS" format
   audioUrl?: string; // mock url -Edward
+  storageType?: "transcript" | "audio" | "analysis" | "other";
 
   // AI ANalysis (pre-gen in mock data)
   summary: string;
@@ -27,12 +32,17 @@ export interface CallRecord {
     sentiment?: "positive" | "neutral" | "negative";
     engagment?: "high" | "normal" | "low";
   };
+
   keyPoints: string[]; // list of strings
   nextSteps: string;
   followUpDate?: string;
   callStrengths?: CallStrength[];
+
+  complianceNotes?: string;
+  additionalNotes?: string;
 }
 
+// Client
 export interface Client {
   id: string;
   name: string; //name is ambiguous. first name? last name? full name?
@@ -46,6 +56,7 @@ export interface Client {
   notes?: string; // Additional notes
 }
 
+// Client Profile
 export interface ClientProfile {
   id: string;
   client: Client; // may not line up with db, possibly change to str
@@ -53,15 +64,8 @@ export interface ClientProfile {
   family?: string;
   goals?: string;
   updatedAt: string;
-}
-
-export interface ClientProfile {
-  id: string;
-  client: Client; // may not line up with db, possibly change to str
-  employment?: string;
-  family?: string;
-  goals?: string;
-  updatedAt: string;
+  combinedIncome?: number;
+  lifeEvents?: string[];
 }
 
 export interface LeadActvity {
@@ -78,7 +82,7 @@ export interface LeadActvity {
   createdAt: string;
 }
 
-// lead is information on the client such as property, life shit, rate discussion, call quality, etc...
+// Lead: lead is information on the client such as property, life shit, rate discussion, call quality, etc...
 export interface Lead {
   id: string;
   client: Client;
@@ -103,11 +107,13 @@ export interface Lead {
 
   lifeEvents?: string[];
   keyDiscussionPoints?: string[];
+
   objectionsAndResponses?: {
     objection: string;
     response: string;
     timestamp: string[]; // list of times ["4:23", "5:11"]
   }[]; // list of dicts
+  
   crossSellOpportunities?: {
     type: string;
     description: string;
