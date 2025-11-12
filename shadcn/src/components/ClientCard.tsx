@@ -423,7 +423,7 @@ const ClientCard = ({
             </div>
             {/* call quality */}
             <div>
-              {lead.callQuality && (
+              {lead.callRecord?.callQuality && (
                 <div>
                   <h4 className="font-medium text-gray-900 mb-2 flex items-center gap-2">
                     <BarChart3 className="w-4 h-4 text-gray-600" />
@@ -434,32 +434,32 @@ const ClientCard = ({
                       <span className="text-gray-600">Sentiment:</span>
                       <span
                         className={`font-medium ${
-                          lead.callQuality.sentiment === "positive"
+                          lead.callRecord.callQuality.sentiment === "positive"
                             ? "text-green-600"
                             : ""
                         } ${
-                          lead.callQuality.sentiment === "negative"
+                          lead.callRecord.callQuality.sentiment === "negative"
                             ? "text-red-600"
                             : ""
                         }`}
                       >
-                        {lead.callQuality.sentiment}
+                        {lead.callRecord.callQuality.sentiment}
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Engagement:</span>
                       <span
                         className={`font-medium ${
-                          lead.callQuality.engagment === "high"
+                          lead.callRecord.callQuality.engagment === "high"
                             ? "text-green-600"
                             : ""
                         } ${
-                          lead.callQuality.engagment === "low"
+                          lead.callRecord.callQuality.engagment === "low"
                             ? "text-red-600"
                             : ""
                         }`}
                       >
-                        {lead.callQuality.engagment}
+                        {lead.callRecord.callQuality.engagment}
                       </span>
                     </div>
                   </div>

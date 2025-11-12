@@ -122,8 +122,8 @@ export const mock_lead_1: Lead = {
       description: "Daughter going to university - education costs protection",
     },
   ],
-  callQuality: mock_call_1.callQuality,
-  recentCalls: [mock_call_1],
+  callRecord: mock_call_1,
+  // recentCalls: [mock_call_1],
   competition: ["TD bank", "RBC Reached out last week."],
 };
 
@@ -211,8 +211,8 @@ export const mock_lead_2: Lead = {
   crossSellOpportunities: [
     { type: "Credit Card", description: "Earn cashback on moving expenses" },
   ],
-  callQuality: mock_call_2.callQuality,
-  recentCalls: [mock_call_2],
+  callRecord: mock_call_2,
+  // recentCalls: [mock_call_2],
   competition: ["Scotiabank", "HSBC"],
 };
 
@@ -290,8 +290,8 @@ export const mock_lead_3: Lead = {
   crossSellOpportunities: [
     { type: "Business Loan", description: "Could refinance trucks at lower rate" },
   ],
-  callQuality: mock_call_3.callQuality,
-  recentCalls: [mock_call_3],
+  callRecord: mock_call_3,
+  // recentCalls: [mock_call_3],
   competition: ["BMO", "CIBC"],
 };
 

@@ -107,6 +107,8 @@ export interface Lead {
   callQuality?: {
     engagement: Lead["urgency"];
   };
+  callRecord?: CallRecord;
+  competition?: string[];
 }
 export type Priority = "urgent" | "high" | "normal";
 export type Tag = "follow-up" | "pipeline" | "prospecting";
