@@ -1,0 +1,52 @@
+# Test Workflow - Runs tests with coverage reporting
+#
+# Run locally:
+#   cd shadcn
+#   npm run test:ci       # Run tests in CI mode
+#   npm run test:verbose  # See all test output
+#   npm test              # Basic test run
+#
+name: Run Tests
+
+on:
+  push:
+    branches: [ main, dev, testing ]
+  pull_request:
+    branches: [ main, dev, testing ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: shadcn/package-lock.json
+
+    - name: Install dependencies
+      working-directory: ./shadcn
+      run: npm ci
+
+    - name: Run tests
+      working-directory: ./shadcn
+      run: npm test -- --ci --coverage --maxWorkers=2
+
+    - name: Archive test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: |
+          shadcn/coverage/
+          shadcn/junit.xml
+        retention-days: 30

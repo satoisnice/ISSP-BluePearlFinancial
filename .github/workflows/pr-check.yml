@@ -1,0 +1,77 @@
+# PR Check Workflow - Validates pull requests with tests and build
+#
+# Run locally before creating PR:
+#   cd shadcn
+#   npm run ci:local          # Full check (tests + build)
+#   npm run test:coverage     # Tests with HTML coverage report
+#
+name: PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        cache-dependency-path: shadcn/package-lock.json
+
+    - name: Install dependencies
+      working-directory: ./shadcn
+      run: npm ci
+
+    - name: Run tests with coverage
+      working-directory: ./shadcn
+      run: npm test -- --ci --coverage --maxWorkers=2
+
+    - name: Check test coverage threshold
+      working-directory: ./shadcn
+      run: |
+        echo "Checking coverage thresholds..."
+        # This will fail if coverage is below thresholds set in jest.config.js
+        npm test -- --ci --coverage --coverageThreshold='{"global":{"branches":50,"functions":50,"lines":50,"statements":50}}'
+      continue-on-error: true
+
+    - name: Build project
+      working-directory: ./shadcn
+      run: npm run build
+
+    - name: Comment PR with test results
+      uses: actions/github-script@v7
+      if: always()
+      with:
+        github-token: ${{secrets.GITHUB_TOKEN}}
+        script: |
+          const fs = require('fs');
+          const coveragePath = './shadcn/coverage/coverage-summary.json';
+
+          let comment = '## Test Results\n\n';
+          comment += ' Tests completed\n\n';
+
+          if (fs.existsSync(coveragePath)) {
+            const coverage = JSON.parse(fs.readFileSync(coveragePath, 'utf8'));
+            const total = coverage.total;
+
+            comment += '### Coverage Summary\n';
+            comment += `- **Lines:** ${total.lines.pct}%\n`;
+            comment += `- **Statements:** ${total.statements.pct}%\n`;
+            comment += `- **Functions:** ${total.functions.pct}%\n`;
+            comment += `- **Branches:** ${total.branches.pct}%\n`;
+          }
+
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
