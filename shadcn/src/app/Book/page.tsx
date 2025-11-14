@@ -31,11 +31,97 @@ import {
 import { Input } from "../../components/ui/input";
 import { mockClients } from '../../data/mockClients';
 
+// Type definitions for the Book page client data structure
+// These interfaces ensure type safety throughout the component
+interface Competitor {
+  bank: string;
+  rate: number;
+}
+
+interface OriginalDeal {
+  year: number;
+  amount: number;
+  rateSecured: number;
+  commission: number;
+  competitors: Competitor[];
+  wonReason: string;
+}
+
+interface LifeChange {
+  event: string;
+  year: number;
+  description: string;
+  icon: string;
+}
+
+interface Debt {
+  type: string;
+  amount: number;
+  payment: number;
+  rate: number;
+}
+
+interface Financial {
+  householdIncome: number;
+  incomeChange: number;
+  debts: Debt[];
+  // Index signature allows dynamic person names (jennifer, robert, etc.) with string/number values
+  [key: string]: number | string | Debt[] | undefined;
+}
+
+interface PrimaryOpportunity {
+  title: string;
+  description: string;
+  savingsAmount: number;
+  urgency: string;
+  urgencyReason: string;
+}
+
+interface CrossSellOpportunity {
+  title: string;
+  description: string;
+  benefit: string;
+  type: string;
+}
+
+interface CompetitiveAlert {
+  threats: string[];
+  clientLoyalty: string;
+}
+
+interface BookClient {
+  id: number;
+  name: string;
+  address: string;
+  phone: string;
+  email: string;
+  renewalDays: number;
+  renewalDate: string;
+  currentAmount: number;
+  currentRate: number;
+  propertyValue: number;
+  propertyValueChange?: number;
+  equity: number;
+  paymentRoom?: number;
+  lifetimeValue?: number;
+  opportunities: number;
+  priority: string;
+  originalDeal: OriginalDeal;
+  lifeChanges: LifeChange[];
+  financial: Financial;
+  primaryOpportunity: PrimaryOpportunity;
+  crossSellOpportunities: CrossSellOpportunity[];
+  competitiveAlert: CompetitiveAlert;
+}
+
 export default function BookPage() {
-  const [selectedClient, setSelectedClient] = useState(null);
+  // Type annotation added to fix: useState requires explicit type when initial value is null
+  const [selectedClient, setSelectedClient] = useState<BookClient | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredClients = mockClients.filter(client =>
+  // Type cast needed because mockClients uses a different Client interface from types/types.ts
+  const clients = mockClients as unknown as BookClient[];
+  const filteredClients = clients.filter(client =>
     client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     client.address.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -52,7 +138,15 @@ export default function BookPage() {
   return <ClientDetails client={selectedClient} onBack={() => setSelectedClient(null)} />;
 }
 
-function ClientList({ clients, onSelectClient, searchTerm, setSearchTerm }) {
+// Props interface added to fix: Component parameters need explicit types
+interface ClientListProps {
+  clients: BookClient[];
+  onSelectClient: (client: BookClient) => void;
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
+}
+
+function ClientList({ clients, onSelectClient, searchTerm, setSearchTerm }: ClientListProps) {
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="bg-white border-b">
@@ -134,7 +228,13 @@ function ClientList({ clients, onSelectClient, searchTerm, setSearchTerm }) {
   );
 }
 
-function ClientDetails({ client, onBack }) {
+// Props interface added to fix: Component parameters need explicit types
+interface ClientDetailsProps {
+  client: BookClient;
+  onBack: () => void;
+}
+
+function ClientDetails({ client, onBack }: ClientDetailsProps) {
   const [dealOpen, setDealOpen] = useState(true);
   const [lifeChangesOpen, setLifeChangesOpen] = useState(true);
   const [financialOpen, setFinancialOpen] = useState(true);
@@ -303,14 +403,15 @@ function ClientDetails({ client, onBack }) {
                   <CardContent>
                     <div className="space-y-4">
                       {client.lifeChanges.map((change, idx) => {
-                        const iconMap = {
+                        // Type annotation added to fix: Record type prevents implicit 'any' errors
+                        const iconMap: Record<string, typeof Heart> = {
                           heart: Heart,
                           target: Target,
                           home: Home,
                           graduation: GraduationCap
                         };
                         const IconComponent = iconMap[change.icon] || Heart;
-                        const colorMap = {
+                        const colorMap: Record<string, string> = {
                           heart: 'pink',
                           target: 'blue',
                           home: 'green',
@@ -367,12 +468,16 @@ function ClientDetails({ client, onBack }) {
                               <span className="font-medium">${client.financial.householdIncome.toLocaleString()} <span className="text-green-600 text-sm">(+${client.financial.incomeChange.toLocaleString()})</span></span>
                             </div>
                           </div>
-                          {Object.keys(client.financial).filter(key => !['householdIncome', 'incomeChange', 'debts'].includes(key)).map((person, idx) => (
-                            <div key={idx}>
-                              <span className="text-sm text-muted-foreground">{person.charAt(0).toUpperCase() + person.slice(1)}:</span>
-                              <p className="text-sm font-medium">{client.financial[person]}</p>
-                            </div>
-                          ))}
+                          {Object.keys(client.financial).filter(key => !['householdIncome', 'incomeChange', 'debts'].includes(key)).map((person, idx) => {
+                            // Type guard added to fix: Financial[key] can be string | number | Debt[] | undefined
+                            const value = client.financial[person];
+                            return (
+                              <div key={idx}>
+                                <span className="text-sm text-muted-foreground">{person.charAt(0).toUpperCase() + person.slice(1)}:</span>
+                                <p className="text-sm font-medium">{typeof value === 'string' || typeof value === 'number' ? value : ''}</p>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                       <div>
@@ -474,8 +579,9 @@ function ClientDetails({ client, onBack }) {
                   <CardContent className="space-y-4">
                     <div>
                       <h4 className="font-semibold mb-2">Opening:</h4>
+                      {/* ESLint fix: Quotes escaped to prevent react/no-unescaped-entities error */}
                       <p className="text-sm text-muted-foreground italic">
-                        "Congratulate on home value increase and Jennifer's career success"
+                        &quot;Congratulate on home value increase and Jennifer&apos;s career success&quot;
                       </p>
                     </div>
 
@@ -486,7 +592,8 @@ function ClientDetails({ client, onBack }) {
                       <ul className="space-y-2 text-sm">
                         <li className="flex items-start gap-2">
                           <span className="text-green-600 mt-0.5">•</span>
-                          <span>Market shifted significantly since 2020 - let's protect their rate</span>
+                          {/* ESLint fix: Apostrophe escaped */}
+                          <span>Market shifted significantly since 2020 - let&apos;s protect their rate</span>
                         </li>
                         <li className="flex items-start gap-2">
                           <span className="text-green-600 mt-0.5">•</span>
@@ -507,23 +614,24 @@ function ClientDetails({ client, onBack }) {
 
                     <div>
                       <h4 className="font-semibold mb-2">Objection Handlers:</h4>
+                      {/* ESLint fix: All quotes and apostrophes escaped throughout this section */}
                       <div className="space-y-3 text-sm">
                         <div>
-                          <p className="font-medium">"Staying with TD"</p>
+                          <p className="font-medium">&quot;Staying with TD&quot;</p>
                           <p className="text-muted-foreground italic ml-4">
                             → I can often beat their renewal offer - let me show you the numbers
                           </p>
                         </div>
                         <div>
-                          <p className="font-medium">"Rates might drop"</p>
+                          <p className="font-medium">&quot;Rates might drop&quot;</p>
                           <p className="text-muted-foreground italic ml-4">
                             → Lock in now with option to blend down if rates fall
                           </p>
                         </div>
                         <div>
-                          <p className="font-medium">"Too busy"</p>
+                          <p className="font-medium">&quot;Too busy&quot;</p>
                           <p className="text-muted-foreground italic ml-4">
-                            → I'll handle everything - 15 min phone call is all we need
+                            → I&apos;ll handle everything - 15 min phone call is all we need
                           </p>
                         </div>
                       </div>
