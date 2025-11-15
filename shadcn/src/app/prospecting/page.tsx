@@ -30,52 +30,52 @@ const Prospecting = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm">New Leads</p>
-                  <p className="text-2xl font-bold">"A Number"</p>
+                  <p className="text-2xl font-bold">0</p>
                 </div>
                 <div className="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center text-primary-foreground">
                   <Users className="w-5 h-5"/>
                 </div>
               </div>
-              <div className="">"For Later"</div>
+              <div className="">For Later</div>
             </div>
             <div className="bg-primary-foreground rounded-lg p-4 border">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm">Follow ups</p>
-                  <p className="text-2xl font-bold">"A Number"</p>
+                  <p className="text-2xl font-bold">0</p>
                 </div>
 
                 <div className="w-10 h-10 bg-yellow-200 rounded-lg flex items-center justify-center text-primary-foreground">
                   <RotateCw className="w-5 h-5"/>
                 </div>
               </div>
-              <div className="">"For Later"</div>
+              <div className="">Due Today</div>
             </div>
 
             <div className="bg-primary-foreground rounded-lg p-4 border">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm">Conversion Rates</p>
-                  <p className="text-2xl font-bold">"A Number"</p>
+                  <p className="text-2xl font-bold">0%</p>
                 </div>
                 <div className="w-10 h-10 bg-red-400 rounded-lg flex items-center justify-center text-primary-foreground">
                   <TrendingUp className="w-5 h-5"/>
                 </div>
               </div>
-              <div className="">"For Later"</div>
+              <div className="">All time</div>
             </div>
 
             <div className="bg-primary-foreground rounded-lg p-4 border">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm">Calls Today</p>
-                  <p className="text-2xl font-bold">"A Number"</p>
+                  <p className="text-2xl font-bold">0</p>
                 </div>
                 <div className="w-10 h-10 bg-purple-400 rounded-lg flex items-center justify-center text-primary-foreground">
                   <RotateCw className="w-5 h-5"/>
                 </div>
               </div>
-              <div className="">"For Later"</div>
+              <div className="">Goal: 30\day</div>
             </div>
           </div>
 
@@ -108,8 +108,8 @@ const Prospecting = () => {
                   </div>
 
                   <div className="bg-primary-foreground rounded-xl p-4 border-gray-200">
-                    <h3 className="font-semibold mb-2">Today's Challenge</h3>
-                    <p className="text-sm opacity-90 mb-3">Test for now</p>
+                    <h3 className="font-semibold mb-2">Today&apos;s Challenge</h3>
+                    <p className="text-sm opacity-90 mb-3">1 of 3 completed</p>
                     <div className="w-full bg-primary-foreground rounded-full h-2 mb-2">
                       <Progress value={33} />
                     </div>
