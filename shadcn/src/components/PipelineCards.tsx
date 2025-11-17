@@ -1,82 +1,75 @@
-"use client";
-
+import Link from "next/link";
 import * as React from "react";
-import mockProspecting from "@/data/mockprospectingcards";
-import { Users, RotateCw, TrendingUp, Phone } from "lucide-react";
 
-type IconKey = "Users" | "RotateCw" | "TrendingUp" | "Phone";
+type Pipeline = {
+  title: string;
+  subtitle: number;
+  href: string;
+  count: number;
+};
 
-const buttonPalette = [
-  "bg-chart-1 text-primary-foreground",
-  "bg-chart-2 text-primary-foreground",
-  "bg-chart-3 text-primary-foreground",
-  "bg-chart-4 text-primary-foreground",
-  "bg-chart-5 text-primary-foreground",
+const actions: Pipeline[] = [
+  {
+    title: "Application",
+    subtitle: 680000,
+    href: "/calls",
+    count: 8,
+  },
+  {
+    title: "Processing",
+    subtitle: 425000,
+    href: "/documents",
+    count: 5,
+  },
+  {
+    title: "Underwriting",
+    subtitle: 720000,
+    href: "/documents",
+    count: 6,
+  },
+  {
+    title: "Appraisal",
+    subtitle: 285000,
+    href: "/documents",
+    count: 2,
+  },
+  {
+    title: "Ready To Fund",
+    subtitle: 340000,
+    href: "/documents",
+    count: 10,
+  },
 ];
-const buttonColor = (i: number) => buttonPalette[i % buttonPalette.length];
-
-const iconForTitle = (title: string): IconKey => {
-  const t = title.toLowerCase();
-  if (t.includes("lead")) return "Users";
-  if (t.includes("follow")) return "RotateCw";
-  if (t.includes("convert") || t.includes("rate")) return "TrendingUp";
-  if (t.includes("call")) return "Phone";
-  return "Users";
+const formatMoney = (value: number) => {
+  const thousands = Math.round(value / 1000);
+  return `$${thousands}k`;
 };
-
-const Icons: Record<IconKey, React.ComponentType<{ size?: number }>> = {
-  Users,
-  RotateCw,
-  TrendingUp,
-  Phone,
-};
-
-const detailClass = (s: string) => {
-  const t = s.toLowerCase().trim();
-  if (t.includes("overdue")) return "text-[color:var(--destructive)]";
-  if (t.startsWith("+")) return "text-[color:var(--progressgood)]";
-  return "text-muted-foreground";
-};
-
-export default function ProspectingCards() {
-  const items = mockProspecting;
-
+function PipelineCards() {
   return (
-    <div>
-      <h2 className="mb-2 text-lg font-bold">Pipeline</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {items.map((a, i) => {
-          const Icon = Icons[iconForTitle(a.title)];
-          return (
-            <div
-              key={`${a.title}-${i}`}
-              className="rounded-2xl p-5 transition-colors bg-card text-card-foreground border border-border hover:border-foreground/20"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <div className="text-base sm:text-lg font-semibold">
-                    {a.title}
-                  </div>
-                  <div className="mt-3 text-3xl sm:text-4xl font-extrabold leading-tight">
-                    (a.count)
-                  </div>
-                  <div className={`mt-2 text-base ${detailClass(a.detail)}`}>
-                    {a.detail}
-                  </div>
-                </div>
-
-                <div
-                  className={`shrink-0 rounded-xl p-3 shadow-sm ${buttonColor(
-                    i
-                  )}`}
-                >
-                  <Icon size={24} />
-                </div>
+    <div className="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+      {actions.map((a, i) => (
+        <Link
+          key={`${a.href}-${i}`} // ← unique even when href repeats
+          href={a.href}
+          className="block rounded-xl border p-5 transition-colors bg-[var(--qa-bg)] hover:opacity-90"
+        >
+          <div className="flex flex-col items-center text-center gap-2">
+            <div className="leading-tight">
+              <div className="text-3xl sm:text-4xl font-extrabold text-[color:var(--qa-color)]">
+                {a.count}
+              </div>
+              <div className="font-medium text-[color:var(--qa-color)]">
+                {a.title}
+              </div>
+              <div className="text-sm text-muted-foreground">
+                {formatMoney(a.subtitle)}
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        </Link>
+      ))}
     </div>
   );
 }
+
+export default PipelineCards;

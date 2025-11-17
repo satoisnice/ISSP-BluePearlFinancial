@@ -3,8 +3,64 @@ import { Badge } from "./badge";
 import { Button } from "./button";
 import { Card, CardContent, CardFooter, CardTitle } from "./card";
 import { ScrollArea } from "./scroll-area";
-import { mockActiveDeals } from "@/data/mockActiveDeals";
 
+export const details = [
+  {
+    id: 1,
+    client: "bob glaston",
+    title: "Subscription Renewal",
+    badge: "John Doe",
+    count: 1400,
+    Property: "Condo Vancouver",
+    Stage: "Processing",
+    next: "Schedule appraisal",
+    days: 6,
+  },
+  {
+    id: 2,
+    client: "peter park",
+    title: "Payment for Services",
+    badge: "Jane Smith",
+    count: 1100,
+    Property: "Town House Burnaby",
+    Stage: "Ready To Fund",
+    next: "Prepare Docs",
+    days: 20,
+  },
+  {
+    id: 3,
+    client: "jane doe",
+    title: "Subscription Renewal",
+    badge: "Michael Johnson",
+    count: 1300,
+    Property: "House Surrey",
+    Stage: "Underwriting",
+    next: "chase underwriter",
+    days: 5,
+  },
+  {
+    id: 4,
+    client: "rick montey",
+    title: "Payment for Services",
+    badge: "Lily Adams",
+    count: 2500,
+    Property: "Condo Richmond",
+    Stage: "Appraisal",
+    next: "Schedule appraisal",
+    days: 1,
+  },
+  {
+    id: 5,
+    client: "joe aston",
+    title: "Subscription Renewal",
+    badge: "Sam Brown",
+    count: 1400,
+    Property: "Appartment Vancouver",
+    Stage: "Ready To Fund",
+    next: "submit to lender",
+    days: 10,
+  },
+];
 const formatMoney = (value: number) => {
   const thousands = Math.round(value / 1000);
   return `$${thousands}k`;
@@ -45,26 +101,26 @@ export default function ActiveDeals() {
       </div>
       <ScrollArea className="h-[300px] mt-2 ">
         <div className="divide-y">
-          {mockActiveDeals.map((a) => (
+          {details.map((a) => (
             <div key={a.id} className={`${cols} px-4 py-4`}>
               <div className="font-medium">{a.client}</div>
 
               <div className="font-semibold text-[var(--Custom-color)]">
-                {formatMoney(a.amount)}
+                {formatMoney(a.count)}
               </div>
 
-              <div className="text-muted-foreground">{a.property}</div>
+              <div className="text-muted-foreground">{a.Property}</div>
 
               <div>
                 <span
                   className={[
                     "stage-pill",
-                    STAGE_CLASS[a.stage] ?? "stage-application",
+                    STAGE_CLASS[a.Stage] ?? "stage-application",
                     "inline-flex items-center rounded-full px-3 py-1 text-sm font-medium",
                     "bg-[var(--pill-bg)] text-[color:var(--pill-fg)] ring-1 ring-[color:var(--pill-ring)]",
                   ].join(" ")}
                 >
-                  {a.stage}
+                  {a.Stage}
                 </span>
               </div>
 
@@ -74,12 +130,12 @@ export default function ActiveDeals() {
                 <span
                   className={[
                     "action-dot",
-                    ACTION_CLASS[a.nextAction ?? ""] ?? "action-default",
+                    ACTION_CLASS[a.next ?? ""] ?? "action-default",
                     "inline-block h-2.5 w-2.5 rounded-full bg-[var(--dot)]",
                   ].join(" ")}
                 />
                 <span className="text-muted-foreground">
-                  {a.nextAction ?? "Submit to lender"}
+                  {a.next ?? "Submit to lender"}
                 </span>
               </div>
 
