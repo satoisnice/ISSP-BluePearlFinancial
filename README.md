@@ -1,5 +1,24 @@
 # Blue Pearl Financial ISSP Project
 
+## Prospecting Page
+
+This page is used to view all the leads the company has into potential applicants.
+
+### Top of the page
+
+Below the master NavBar you'll see what the page is all about (in case you forget). 
+The card blocks after, are statistics of the what the individual broker has done.
+And finally (not implemented yet), the auto dialer for calls to come in one at a time on a time gap between and start session (not implemented yet) will call a specific lead to get into the call dashboard (not the same as the call analysis dashboard but similiar to a discord call). 
+
+### The main content
+
+After all of that, we have the priority prospects organized by the date and colored tags (Hot, Warm, Cold). 
+Each of them have a call and message button (not implemented yet), each with obvious uses. The call button will go to the call dashboard, and the message button will open up a dm's dashboard of all the Brokers messages all of their leads/applicants.
+
+We also have a Today's Challenge card which can be modified by either the manager or a personal goal of the broker (more lientient towards the manager).
+
+The Call's Script are a reminder of sorts to remind brokers how the call should go usually (best case).
+
 ## Getting Started
 
 First, run the development server:
