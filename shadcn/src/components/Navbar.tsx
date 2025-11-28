@@ -60,6 +60,12 @@ const Navbar = () => {
               <DropdownMenuItem asChild data-active={pathname === "/Book"} className="hover:cursor-pointer">
                 <Link href="/Book">Book</Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild data-active={pathname === "/CallIntelligenceDashboard"} className="hover:cursor-pointer">
+                <Link href="/CallIntelligenceDashboard">Call Intelligence</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild data-active={pathname === "/CallRecordingAndAnalysis"} className="hover:cursor-pointer">
+                <Link href="/CallRecordingAndAnalysis">Call Recording & Analysis</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
